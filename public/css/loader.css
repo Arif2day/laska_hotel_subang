@@ -1,0 +1,168 @@
+.lds-ellipsis {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+  }
+  .lds-ellipsis div {
+    position: absolute;
+    top: 33px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #fff;
+    animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  }
+  .lds-ellipsis div:nth-child(1) {
+    left: 8px;
+    animation: lds-ellipsis1 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(2) {
+    left: 8px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(3) {
+    left: 32px;
+    animation: lds-ellipsis2 0.6s infinite;
+  }
+  .lds-ellipsis div:nth-child(4) {
+    left: 56px;
+    animation: lds-ellipsis3 0.6s infinite;
+  }
+  @keyframes lds-ellipsis1 {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @keyframes lds-ellipsis3 {
+    0% {
+      transform: scale(1);
+    }
+    100% {
+      transform: scale(0);
+    }
+  }
+  @keyframes lds-ellipsis2 {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(24px, 0);
+    }
+  }
+  
+  .activated,.activated:hover,.activated:focus{
+    background-color: #36b9cc;
+  }
+
+  .mxActionBtn{
+    max-width:70px;
+  }
+
+  .loading {
+    z-index: 20;
+    position: absolute;
+    top: 0;
+    left:-5px;
+    width: 100%;
+    height: 100%;
+      background-color: rgba(0,0,0,0.4);
+  }
+  .loading-content {
+    position: absolute;
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    top: 40%;
+    left:35%;
+    animation: spin 2s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  
+
+
+
+
+    
+    .container_div {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 500px;
+      margin: 10px auto;
+    }
+
+    .text_div {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .divider_div {
+      position: relative;
+      flex: 1;
+      height: 2px;
+      background-color: #ccc;
+      margin: 0 10px;
+    }
+
+    .divider_div_done {
+      background-color: #ccc;
+    }
+    .divider_div_done::before,
+    .divider_div_done::after {
+      background-color: #ccc;
+    }
+
+    .divider_div::before,
+    .divider_div::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      width: 10px;
+      height: 10px;
+      background-color: #ccc;
+      border-radius: 50%;
+      transform: translateY(-50%);
+    }
+
+    .divider_div::before {
+      left: 0;
+    }
+
+    .divider_div::after {
+      right: 0;
+    }
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      padding: 2px 4px;
+      font-size: 20px;
+      color: green;
+      z-index: 1;
+    }
+
+    .text_end {
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer; /* Menunjukkan bahwa elemen bisa diinteraksi */
+      transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+    
+    .text_end:hover {
+      color: #007bff; /* Ubah warna teks saat hover */
+      text-decoration: underline;
+    }
