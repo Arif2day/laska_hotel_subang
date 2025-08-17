@@ -344,9 +344,17 @@ img{
 }
 
 .menu__img{
-  width: 100px;
+  /* width: 100px;
   align-self: center;
-  margin-bottom: var(--mb-2);
+  margin-bottom: var(--mb-2); */
+  width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: .5rem .5rem 0 0;
 }
 
 .menu__name, .menu__preci{
@@ -373,6 +381,8 @@ img{
   display: flex;
   padding: .625rem .813rem;
   border-radius: .5rem 0 .5rem 0;
+  width: 40%;
+  justify-content: center;
 }
 
 /*========== APP ==========*/
@@ -529,7 +539,7 @@ img{
     padding: 1.5rem;
   }
   .menu__img{
-    width: 130px;
+    width: 100%;
   }
 
   .app__store{
@@ -559,3 +569,19 @@ img{
         height: 640px;
     }
 }
+
+.alert-fixed {
+  position: fixed;
+  top: 80px; /* kasih jarak dari atas supaya tidak nabrak navbar */
+  right: 20px;
+  z-index: 9999; /* lebih tinggi dari navbar */
+  min-width: 300px;
+  margin: 0 10px 0 10px;
+}
+
+/* .nav__link.active {
+  color: #fff !important;       
+  background-color: #28a745;    
+  border-radius: 5px;            
+  font-weight: bold;             
+} */

@@ -6,7 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Orders extends Model
 {
-  protected $fillable = [''];
+  protected $fillable = [
+    'table_id',
+    'table_token',
+    'reservator_name',
+        'total_amount',
+        'payment_status',
+        'payment_method',
+        'status',
+  ];
   protected $table = 'orders';
   
   public function table()
@@ -19,7 +27,7 @@ class Orders extends Model
       return $this->belongsTo('App\Models\Users', 'validator_id');    
   }
 
-  public function detail()
+  public function details()
   {
       return $this->hasMany('App\Models\OrderDetails', 'order_id');    
   }

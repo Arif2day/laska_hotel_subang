@@ -1,6 +1,32 @@
 @extends('Guest.main')
 @section('content')
 <main class="l-main">
+    @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show alert-fixed" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+    
+    @if(session('error'))
+        <div class="alert alert-danger alert-dismissible fade show alert-fixed" role="alert">
+            {{ session('error') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    @if($pendingOrder)
+        <div class="alert alert-info">
+            Kamu memiliki pesanan yang belum dibayar.
+            <a href="{{ url('payment/' . $pendingOrder->id) }}" class="btn btn-primary btn-sm">
+                Lanjut ke Pembayaran
+            </a>
+        </div>
+    @endif
     <!--========== HOME ==========-->
     <section class="home" id="home">
         <div class="home__container bd-container bd-grid">
@@ -316,7 +342,7 @@
     </section>
 
     <!--========== MENU ==========-->
-    <section class="menu section bd-container" id="menu">
+    {{-- <section class="menu section bd-container" id="menu">
         <span class="section-subtitle">Special</span>
         <h2 class="section-title">Menu of the week</h2>
 
@@ -345,7 +371,7 @@
                 <a href="#" class="button menu__button"><i class='bx bx-cart-alt'></i></a>
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!--===== APP =======-->
     <section class="app section bd-container">
@@ -381,5 +407,21 @@
 </main>
 @endsection
 @section('script')
-
+<script>
+    // document.addEventListener("DOMContentLoaded", function() {
+    //     if (window.location.hash === "#home") {
+    //         document.getElementById("nav-home").classList.add("active");
+    //     }
+    //     if (window.location.hash === "#about") {
+    //         document.getElementById("nav-about").classList.add("active");
+    //     }
+    //     if (window.location.hash === "#service") {
+    //         document.getElementById("nav-service").classList.add("active");
+    //     }
+    //     if (window.location.hash === "#contact") {
+    //         document.getElementById("nav-contact").classList.add("active");
+    //     }
+    // });
+    
+</script>
 @endsection

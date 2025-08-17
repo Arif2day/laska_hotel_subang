@@ -13,4 +13,9 @@ class Menus extends Model
   {
       return $this->belongsTo('App\Models\MenuTypes', 'menu_type_id');    
   }
+
+  public function orderDetails()
+  {
+      return $this->hasMany('App\Models\OrderDetails');
+  }
 }

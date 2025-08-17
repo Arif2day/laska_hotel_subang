@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'BAUmember' => \App\Http\Middleware\BAUAdminMember::class,
         'PRODImember' => \App\Http\Middleware\PRODIAdminMember::class,
         'WRAkademik' => \App\Http\Middleware\WR1AdminMember::class,
+        'check.table' => \App\Http\Middleware\CheckTable::class,
     ];
 }

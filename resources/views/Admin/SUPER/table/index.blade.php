@@ -69,6 +69,7 @@
                                 <th style="width: 20px">NO</th>
                                 <th>TABLE NAME</th>
                                 <th>CLASS NAME</th>
+                                <th>QRCODE</th>
                                 <th style="width: 100px">ACTION</th>
                             </thead>
                             <tbody></tbody>
@@ -124,11 +125,13 @@
             $(cells[1]).addClass('text-sm')                 
             $(cells[2]).addClass('text-center text-sm')                   
             $(cells[3]).addClass('text-center text-sm')                   
+            $(cells[4]).addClass('text-center text-sm')                   
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'table_name', name: 'table_name'},
             {data: 'table_class.class_name', name: 'table_class.class_name'},
+            {data: 'qrcode', name: 'qrcode'},
             {data: 'action', name:'action'},               
         ]       
     });
@@ -288,5 +291,15 @@
         $('#editTableModal select[id="e_table_class"]').val(table_class_id);        
 
     });
+
+    function printQRCode(id) {
+        let content = document.getElementById('qr-' + id).innerHTML;
+        let w = window.open('', '', 'height=400,width=400');
+        w.document.write('<html><head><title>Cetak QR</title></head><body>');
+        w.document.write(content);
+        w.document.write('</body></html>');
+        w.document.close();
+        w.print();
+    }
 </script>
 @endsection

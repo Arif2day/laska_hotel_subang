@@ -6,9 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\TableClasses;
 use App\Models\Tables;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Sentinel;
 use DataTables;
+use Str;
 
 class TableController extends Controller
 {
@@ -37,7 +38,18 @@ class TableController extends Controller
                     ;
                     return $actionBtn;
                 })
-                ->rawColumns(['action'])
+                ->addColumn('qrcode', function ($row) {
+                  $qr = QrCode::size(100)
+                  ->generate(url('/menu?token='.$row->table_token));
+          
+                  return '<div class="qr-wrapper" id="qr-'.$row->id.'">
+                              '.$qr.'
+                          </div>
+                          <button class="btn btn-sm btn-primary mt-2" onclick="printQRCode('.$row->id.')">
+                              Cetak QR
+                          </button>'; 
+                })
+                ->rawColumns(['action','qrcode'])
                 ->make(true);
           }
     }
@@ -51,6 +63,7 @@ class TableController extends Controller
         $data = new Tables();  
         $data->table_class_id = $request->table_class_id;
         $data->table_name = $request->table_name;
+        $data->table_token = Str::uuid()->toString();
         if($data->save()){
           $res['message']="Table saved successfully.";
         }else{

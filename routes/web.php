@@ -5,6 +5,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\ScanController;
+use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Super\UserManagerController;
 use App\Http\Controllers\Super\TableClassController;
 use App\Http\Controllers\Super\TableController;
@@ -42,7 +46,19 @@ Sentinel::disableCheckpoints();
 Route::get('login', [UserController::class,'login']);
 Route::post('login', [UserController::class,'postLogin']);
 
-Route::get('/',[BerandaController::class,'index']);
+Route::get('/',[BerandaController::class,'index'])->name('beranda');
+Route::get('/menu',[BerandaController::class,'indexMenu'])->middleware('check.table')->name('menu');
+
+Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
+Route::get('/cart/view', [CartController::class, 'view'])->name('cart.view');
+Route::post('/cart/delete', [CartController::class, 'delete'])->name('cart.remove');
+Route::post('/cart/update-note', [CartController::class, 'updateNote'])->name('cart.updateNote');
+
+Route::get('/scan', [ScanController::class, 'index'])->name('scan.qr');
+
+Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
+Route::get('/payment/{order}', [PaymentController::class, 'show'])->name('payment.show');
+Route::post('/payment/{order}/pay', [PaymentController::class, 'pay'])->name('payment.pay');
 
 
 Route::group(['middleware' => 'sentinelmember'], function(){
