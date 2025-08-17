@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 16/08/2025 14:31:57
+ Date: 17/08/2025 22:26:09
 */
 
 SET NAMES utf8mb4;
@@ -1930,10 +1930,10 @@ CREATE TABLE `menus`  (
 -- ----------------------------
 -- Records of menus
 -- ----------------------------
-INSERT INTO `menus` VALUES (1, 3, 'Thai Northern Style Noodle', NULL, NULL, 'uploads/menus/menus689bf87606a11.jpeg', '1', 30000.00, '2025-08-13 09:29:10', '2025-08-13 09:29:10');
-INSERT INTO `menus` VALUES (2, 2, 'Mango Juice', NULL, NULL, 'uploads/menus/menus689bfa19d7c79.jpeg', '1', 10000.00, '2025-08-13 09:36:09', '2025-08-13 09:36:09');
-INSERT INTO `menus` VALUES (3, 5, 'Panna Cotta with Pineaple Slices', NULL, NULL, 'uploads/menus/menus689bfafc366e4.jpeg', '1', 20000.00, '2025-08-13 09:39:56', '2025-08-13 09:39:56');
-INSERT INTO `menus` VALUES (4, 1, 'Tasty Asian Dumplings', NULL, NULL, 'uploads/menus/menus689bfc9757f1f.jpeg', '1', 15000.00, '2025-08-13 09:46:47', '2025-08-13 09:46:47');
+INSERT INTO `menus` VALUES (1, 3, 'Thai Northern Style Noodle', 'Delicious Noodle', NULL, 'uploads/menus/menus689bf87606a11.jpeg', '1', 30000.00, '2025-08-13 09:29:10', '2025-08-13 09:29:10');
+INSERT INTO `menus` VALUES (2, 2, 'Mango Juice', 'Delicious Drink', NULL, 'uploads/menus/menus689bfa19d7c79.jpeg', '1', 10000.00, '2025-08-13 09:36:09', '2025-08-13 09:36:09');
+INSERT INTO `menus` VALUES (3, 5, 'Panna Cotta with Pineaple Slices', 'Tasty Food', NULL, 'uploads/menus/menus689bfafc366e4.jpeg', '1', 20000.00, '2025-08-13 09:39:56', '2025-08-13 09:39:56');
+INSERT INTO `menus` VALUES (4, 1, 'Tasty Asian Dumplings', 'Nice', NULL, 'uploads/menus/menus689bfc9757f1f.jpeg', '1', 15000.00, '2025-08-13 09:46:47', '2025-08-13 09:46:47');
 
 -- ----------------------------
 -- Table structure for migrations
@@ -1988,6 +1988,43 @@ INSERT INTO `notifications` VALUES ('9536959a-0aa0-43ce-a77f-e5312ff09e70', 'App
 INSERT INTO `notifications` VALUES ('bc4d120b-7fd6-4891-8e6a-6eb6986bb166', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 6, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-08-02 23:08:30', '2025-07-25 16:19:12', '2025-08-02 23:08:30');
 
 -- ----------------------------
+-- Table structure for order_details
+-- ----------------------------
+DROP TABLE IF EXISTS `order_details`;
+CREATE TABLE `order_details`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NULL DEFAULT NULL,
+  `menu_id` int(11) NULL DEFAULT NULL,
+  `quantity` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `price` decimal(10, 2) NULL DEFAULT NULL,
+  `subtotal` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `note` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Table structure for orders
+-- ----------------------------
+DROP TABLE IF EXISTS `orders`;
+CREATE TABLE `orders`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `table_id` int(11) NULL DEFAULT NULL,
+  `table_token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `reservator_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `validator_id` int(11) NULL DEFAULT NULL,
+  `validator_decision` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `total_amount` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `payment_status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'unpaid',
+  `payment_method` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'cash',
+  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'pending',
+  `created_at` timestamp(0) NULL DEFAULT NULL,
+  `updated_at` timestamp(0) NULL DEFAULT NULL,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Table structure for persistences
 -- ----------------------------
 DROP TABLE IF EXISTS `persistences`;
@@ -1999,7 +2036,7 @@ CREATE TABLE `persistences`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `persistences_code_unique`(`code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 789 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 790 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of persistences
@@ -2240,7 +2277,7 @@ INSERT INTO `persistences` VALUES (784, 1, '2Q3Wu1Icno13uIpN9Ta8KI6yol6HlyWI', '
 INSERT INTO `persistences` VALUES (785, 1, 'wi3TbUkOlvH18LRfvU0ZGZwcTXJoKRWS', '2025-08-12 10:45:28', '2025-08-12 10:45:28');
 INSERT INTO `persistences` VALUES (786, 1, 'geejziigEaSotp8KSzIHxVKKefcJiuHg', '2025-08-12 19:11:08', '2025-08-12 19:11:08');
 INSERT INTO `persistences` VALUES (787, 1, 'X9R1JRCpLBHgQvpGVocIWoeiHhVCedn4', '2025-08-13 06:12:52', '2025-08-13 06:12:52');
-INSERT INTO `persistences` VALUES (788, 1, 'tLObZbzelHaZGBk1KPzp5nctfnefLyqz', '2025-08-16 11:53:05', '2025-08-16 11:53:05');
+INSERT INTO `persistences` VALUES (789, 1, '3h64Pw4Qxlu5rAvTdLmxjqxgi919vnTG', '2025-08-17 13:17:01', '2025-08-17 13:17:01');
 
 -- ----------------------------
 -- Table structure for reminders
@@ -2342,16 +2379,18 @@ CREATE TABLE `tables`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `table_class_id` int(11) NULL DEFAULT NULL,
   `table_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `table_token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
+  `status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'available',
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of tables
 -- ----------------------------
-INSERT INTO `tables` VALUES (1, 1, 'Luxury 201', '2025-08-12 19:45:36', '2025-08-12 19:45:36');
-INSERT INTO `tables` VALUES (2, 2, 'ST 101', '2025-08-12 19:46:33', '2025-08-12 19:57:22');
+INSERT INTO `tables` VALUES (3, 1, 'Luxury 201', '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'available', '2025-08-17 13:17:34', '2025-08-17 22:22:25');
+INSERT INTO `tables` VALUES (4, 2, 'ST 101', 'f14335cf-f089-4c13-b2ba-c65811af1502', 'available', '2025-08-17 13:33:20', '2025-08-17 13:33:20');
 
 -- ----------------------------
 -- Table structure for throttle
@@ -2445,6 +2484,6 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin@laskahotel.com', '$2y$10$HdpvjaogHilztbi4qNzbWubFIQezQCF6.qu/yUlfr8/rE4Zg43IA.', NULL, '2025-08-16 11:53:05', 'Surya', 'Mandala', '082332604746', '1981-11-23', NULL, '2022-07-05 06:35:41', '2025-08-16 11:53:05');
+INSERT INTO `users` VALUES (1, 'admin@laskahotel.com', '$2y$10$HdpvjaogHilztbi4qNzbWubFIQezQCF6.qu/yUlfr8/rE4Zg43IA.', NULL, '2025-08-17 13:17:01', 'Surya', 'Mandala', '082332604746', '1981-11-23', NULL, '2022-07-05 06:35:41', '2025-08-17 13:17:01');
 
 SET FOREIGN_KEY_CHECKS = 1;
