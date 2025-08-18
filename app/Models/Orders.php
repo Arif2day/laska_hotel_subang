@@ -10,6 +10,7 @@ class Orders extends Model
     'table_id',
     'table_token',
     'reservator_name',
+    'validator_id',
         'total_amount',
         'payment_status',
         'payment_method',
@@ -20,6 +21,11 @@ class Orders extends Model
   public function table()
   {
       return $this->belongsTo('App\Models\Tables', 'table_id');    
+  }
+
+  public function tableClass()
+  {
+      return $this->belongsTo('App\Models\Tables', 'table_class_id');    
   }
 
   public function validator()

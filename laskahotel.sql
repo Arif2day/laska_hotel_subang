@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 17/08/2025 22:26:09
+ Date: 18/08/2025 22:15:10
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `activations`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1797 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1799 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of activations
@@ -1827,6 +1827,8 @@ INSERT INTO `activations` VALUES (1793, 19, '8rsHcdkBU6G6UxcmMOC7jLm69FhSMHIx', 
 INSERT INTO `activations` VALUES (1794, 20, 'skf0D6MWNrxG2bZ9oSPGkNAfTFb1Z5Q3', 1, '2025-07-20 09:57:27', '2025-07-20 09:57:27', '2025-07-20 09:57:27');
 INSERT INTO `activations` VALUES (1795, 21, 'klCCzX6kxMruVgNCEAEUT3QtZko1DbBf', 1, '2025-07-20 09:58:06', '2025-07-20 09:58:06', '2025-07-20 09:58:06');
 INSERT INTO `activations` VALUES (1796, 22, 'B30X0dnfVnA5GdklDm9B82gQDTNQFoVu', 1, '2025-07-20 09:58:46', '2025-07-20 09:58:46', '2025-07-20 09:58:46');
+INSERT INTO `activations` VALUES (1797, 2, 'NcSSHgW1Vzx13zlVfjADmd9yG3kb0HVy', 1, '2025-08-17 22:45:46', '2025-08-17 22:45:46', '2025-08-17 22:45:46');
+INSERT INTO `activations` VALUES (1798, 3, 'ejt7bJMpDfWtnj0NAk4V3BWw2vFlXvEO', 1, '2025-08-18 20:32:24', '2025-08-18 20:32:24', '2025-08-18 20:32:24');
 
 -- ----------------------------
 -- Table structure for failed_jobs
@@ -1978,14 +1980,31 @@ CREATE TABLE `notifications`  (
 -- ----------------------------
 -- Records of notifications
 -- ----------------------------
-INSERT INTO `notifications` VALUES ('1afde5e2-eb3e-46aa-ac2f-d1bc26fa9f17', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 1, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 16:17:19', '2025-07-25 16:17:09', '2025-07-25 16:17:19');
-INSERT INTO `notifications` VALUES ('2eb39263-0e4d-4384-a0e3-76c5f309cc04', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 8, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 15:51:53', '2025-07-25 15:38:06', '2025-07-25 15:51:53');
-INSERT INTO `notifications` VALUES ('31b12229-e906-41f3-a7b1-7c6794abe2f6', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 15, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 16:15:24', '2025-07-25 16:15:11', '2025-07-25 16:15:24');
-INSERT INTO `notifications` VALUES ('577987d4-08c9-4ce9-99a5-26363a0ee712', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 15, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 16:14:53', '2025-07-25 16:14:41', '2025-07-25 16:14:53');
-INSERT INTO `notifications` VALUES ('57cdef0b-0760-4bac-8c1d-4a8c6064eab4', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 3, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 16:14:39', '2025-07-25 16:14:20', '2025-07-25 16:14:39');
-INSERT INTO `notifications` VALUES ('5fcdad10-ad64-43bd-9f9c-05fa37376906', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 3, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 16:17:00', '2025-07-25 16:16:46', '2025-07-25 16:17:00');
-INSERT INTO `notifications` VALUES ('9536959a-0aa0-43ce-a77f-e5312ff09e70', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 17, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-07-25 16:15:08', '2025-07-25 16:14:56', '2025-07-25 16:15:08');
-INSERT INTO `notifications` VALUES ('bc4d120b-7fd6-4891-8e6a-6eb6986bb166', 'App\\Notifications\\ApsRequestSubmitted', 'App\\Models\\Users', 6, '{\"message\":\"Pengajuan Mutasi APS baru dari Ismail Lukman\",\"url\":\"\\/permohonan-mutasi\\/riwayat\\/1\"}', '2025-08-02 23:08:30', '2025-07-25 16:19:12', '2025-08-02 23:08:30');
+INSERT INTO `notifications` VALUES ('187ca606-abd2-46dc-a024-f4ee1dcc9888', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":6,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:17:54', '2025-08-18 21:17:26', '2025-08-18 21:17:54');
+INSERT INTO `notifications` VALUES ('2a95c384-31f7-4aef-b79a-015425a3dfb7', 'App\\Notifications\\OrderApprovedNotification', 'App\\Models\\Users', 3, '{\"message\":\"Order approved oleh admin dari meja Luxury 201\",\"order_id\":5,\"type\":\"Order Perlu Disajikan\",\"notifier\":\"admin\"}', '2025-08-18 20:40:48', '2025-08-18 20:40:13', '2025-08-18 20:40:48');
+INSERT INTO `notifications` VALUES ('347cbe0b-b892-44d3-a87d-4a225db7d175', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":10,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', NULL, '2025-08-18 22:02:32', '2025-08-18 22:02:32');
+INSERT INTO `notifications` VALUES ('43f29a41-017d-4fed-8057-adf01ac909fc', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":4}', '2025-08-18 19:29:07', '2025-08-18 19:19:19', '2025-08-18 19:19:19');
+INSERT INTO `notifications` VALUES ('477d5978-fff6-4d1e-a55a-f49a3d171b59', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":7,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', NULL, '2025-08-18 21:20:32', '2025-08-18 21:20:32');
+INSERT INTO `notifications` VALUES ('60b596b3-eb8b-4ad6-8844-956049d89ec0', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":5,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-18 21:08:07', '2025-08-18 21:07:34', '2025-08-18 21:08:07');
+INSERT INTO `notifications` VALUES ('6c176012-a447-43a3-a2e3-7c6aac40a9a0', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:19:02', '2025-08-18 21:19:02');
+INSERT INTO `notifications` VALUES ('71e2ebe0-ee4e-41db-b51a-dfa2e62b95da', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:19:08', '2025-08-18 21:19:02', '2025-08-18 21:19:08');
+INSERT INTO `notifications` VALUES ('7ebe6450-0121-4009-85b6-eaf43473cd93', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":8,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:38:57', '2025-08-18 21:30:56', '2025-08-18 21:38:57');
+INSERT INTO `notifications` VALUES ('8362c443-32d3-4c6c-a6e9-3d85330da308', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":5}', '2025-08-18 20:30:00', '2025-08-18 19:34:02', '2025-08-18 20:30:00');
+INSERT INTO `notifications` VALUES ('8f529a82-d5f0-4332-a13a-abdcd1571012', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 22:00:50', '2025-08-18 22:00:50');
+INSERT INTO `notifications` VALUES ('8fa3422d-0db6-4566-872b-6c101a6e32db', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":11,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 22:03:57', '2025-08-18 22:03:57');
+INSERT INTO `notifications` VALUES ('94c16ab6-b0f0-47b7-a306-474796c165d3', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 22:01:18', '2025-08-18 22:00:50', '2025-08-18 22:01:18');
+INSERT INTO `notifications` VALUES ('9cfe5586-c591-4213-8c00-1f5167c44b80', 'App\\Notifications\\OrderApprovedNotification', 'App\\Models\\Users', 3, '{\"message\":\"Order approved oleh admin dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Perlu Disajikan\",\"notifier\":\"admin\"}', '2025-08-18 22:02:05', '2025-08-18 22:01:52', '2025-08-18 22:02:05');
+INSERT INTO `notifications` VALUES ('a2021624-e4fd-4300-8ec5-5bd32de263ea', 'App\\Notifications\\OrderApprovedNotification', 'App\\Models\\Users', 3, '{\"message\":\"Order approved oleh admin dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Perlu Disajikan\",\"notifier\":\"admin\"}', '2025-08-18 21:20:19', '2025-08-18 21:19:15', '2025-08-18 21:20:19');
+INSERT INTO `notifications` VALUES ('aada5166-e864-4947-8d94-e0dfaa83409a', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":7,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-18 21:20:47', '2025-08-18 21:20:32', '2025-08-18 21:20:47');
+INSERT INTO `notifications` VALUES ('bbd95fb9-acce-440c-b2e3-f6c544ae087a', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":5}', '2025-08-18 20:39:24', '2025-08-18 19:34:02', '2025-08-18 20:39:24');
+INSERT INTO `notifications` VALUES ('d57ac12e-b067-40ee-93dc-40f2d12e5b9c', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":9,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:44:40', '2025-08-18 21:44:40');
+INSERT INTO `notifications` VALUES ('d6947466-5b98-4970-a72d-53ff99c71e2f', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":4}', '2025-08-18 19:29:11', '2025-08-18 19:19:19', '2025-08-18 19:19:19');
+INSERT INTO `notifications` VALUES ('e0b1d174-e30f-4f8e-901d-1d30326e0b7d', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":9,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:49:04', '2025-08-18 21:44:40', '2025-08-18 21:49:04');
+INSERT INTO `notifications` VALUES ('ea6b55bd-88f1-403c-a0f2-a3bb7d3bb1ca', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":10,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-18 22:02:47', '2025-08-18 22:02:32', '2025-08-18 22:02:47');
+INSERT INTO `notifications` VALUES ('ee14b0a4-9127-4eb2-9e0f-c5fcd76062c5', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":8,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:30:56', '2025-08-18 21:30:56');
+INSERT INTO `notifications` VALUES ('ee624a91-ed2a-4851-b386-636736bf625d', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":11,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 22:05:11', '2025-08-18 22:03:57', '2025-08-18 22:05:11');
+INSERT INTO `notifications` VALUES ('ef535301-d0b7-4d3b-9ec0-367b22f6cb23', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":6,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:17:26', '2025-08-18 21:17:26');
+INSERT INTO `notifications` VALUES ('fbbb6f84-7d0a-43e0-be50-61d2948aeb98', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":5,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', NULL, '2025-08-18 21:07:34', '2025-08-18 21:07:34');
 
 -- ----------------------------
 -- Table structure for order_details
@@ -2002,7 +2021,28 @@ CREATE TABLE `order_details`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order_details
+-- ----------------------------
+INSERT INTO `order_details` VALUES (1, 1, 1, '1', 30000.00, '30000', '', '2025-08-18 06:20:14', '2025-08-18 06:20:14');
+INSERT INTO `order_details` VALUES (2, 1, 2, '2', 10000.00, '20000', '', '2025-08-18 06:20:14', '2025-08-18 06:20:14');
+INSERT INTO `order_details` VALUES (3, 2, 1, '2', 30000.00, '60000', 'Pedas', '2025-08-18 16:33:25', '2025-08-18 16:33:25');
+INSERT INTO `order_details` VALUES (4, 2, 3, '1', 20000.00, '20000', '', '2025-08-18 16:33:25', '2025-08-18 16:33:25');
+INSERT INTO `order_details` VALUES (5, 3, 3, '1', 20000.00, '20000', '', '2025-08-18 19:16:46', '2025-08-18 19:16:46');
+INSERT INTO `order_details` VALUES (6, 4, 3, '1', 20000.00, '20000', '', '2025-08-18 19:19:17', '2025-08-18 19:19:17');
+INSERT INTO `order_details` VALUES (7, 5, 2, '1', 10000.00, '10000', '', '2025-08-18 19:34:02', '2025-08-18 19:34:02');
+INSERT INTO `order_details` VALUES (8, 6, 2, '1', 10000.00, '10000', '', '2025-08-18 21:17:26', '2025-08-18 21:17:26');
+INSERT INTO `order_details` VALUES (9, 6, 1, '3', 30000.00, '90000', '', '2025-08-18 21:17:26', '2025-08-18 21:17:26');
+INSERT INTO `order_details` VALUES (10, 7, 1, '4', 30000.00, '120000', '', '2025-08-18 21:19:02', '2025-08-18 21:19:02');
+INSERT INTO `order_details` VALUES (11, 7, 2, '4', 10000.00, '40000', '', '2025-08-18 21:19:02', '2025-08-18 21:19:02');
+INSERT INTO `order_details` VALUES (12, 8, 2, '1', 10000.00, '10000', '', '2025-08-18 21:30:56', '2025-08-18 21:30:56');
+INSERT INTO `order_details` VALUES (13, 8, 1, '6', 30000.00, '180000', '', '2025-08-18 21:30:56', '2025-08-18 21:30:56');
+INSERT INTO `order_details` VALUES (14, 9, 2, '1', 10000.00, '10000', '', '2025-08-18 21:44:40', '2025-08-18 21:44:40');
+INSERT INTO `order_details` VALUES (15, 10, 1, '2', 30000.00, '60000', 'pedas', '2025-08-18 22:00:50', '2025-08-18 22:00:50');
+INSERT INTO `order_details` VALUES (16, 10, 2, '1', 10000.00, '10000', '', '2025-08-18 22:00:50', '2025-08-18 22:00:50');
+INSERT INTO `order_details` VALUES (17, 11, 1, '1', 30000.00, '30000', '', '2025-08-18 22:03:57', '2025-08-18 22:03:57');
 
 -- ----------------------------
 -- Table structure for orders
@@ -2014,7 +2054,6 @@ CREATE TABLE `orders`  (
   `table_token` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `reservator_name` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `validator_id` int(11) NULL DEFAULT NULL,
-  `validator_decision` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `total_amount` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL,
   `payment_status` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'unpaid',
   `payment_method` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT 'cash',
@@ -2022,7 +2061,22 @@ CREATE TABLE `orders`  (
   `created_at` timestamp(0) NULL DEFAULT NULL,
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of orders
+-- ----------------------------
+INSERT INTO `orders` VALUES (1, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Sukma', 1, '50000', 'unpaid', 'cash', 'rejected', '2025-08-18 06:20:14', '2025-08-18 16:23:07');
+INSERT INTO `orders` VALUES (2, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Nula', 2, '80000', 'paid', 'cash', 'served', '2025-08-18 16:33:25', '2025-08-18 16:33:44');
+INSERT INTO `orders` VALUES (3, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Nina', NULL, '20000', 'paid', 'cash', 'served', '2025-08-18 19:16:46', '2025-08-18 19:16:46');
+INSERT INTO `orders` VALUES (4, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Nina', 2, '20000', 'unpaid', 'cash', 'rejected', '2025-08-18 19:19:17', '2025-08-18 19:28:55');
+INSERT INTO `orders` VALUES (5, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Nana', 2, '10000', 'paid', 'cash', 'served', '2025-08-18 19:34:02', '2025-08-18 21:16:03');
+INSERT INTO `orders` VALUES (6, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Ali Maksum', 2, '100000', 'unpaid', 'cash', 'rejected', '2025-08-18 21:17:26', '2025-08-18 21:18:05');
+INSERT INTO `orders` VALUES (7, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Susan', 2, '160000', 'paid', 'cash', 'served', '2025-08-18 21:19:02', '2025-08-18 21:20:54');
+INSERT INTO `orders` VALUES (8, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Delisa', 2, '190000', 'unpaid', 'cash', 'rejected', '2025-08-18 21:30:56', '2025-08-18 21:39:06');
+INSERT INTO `orders` VALUES (9, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Arik', 2, '10000', 'unpaid', 'cash', 'rejected', '2025-08-18 21:44:40', '2025-08-18 21:49:12');
+INSERT INTO `orders` VALUES (10, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Andi', 2, '70000', 'paid', 'cash', 'served', '2025-08-18 22:00:50', '2025-08-18 22:03:21');
+INSERT INTO `orders` VALUES (11, 3, '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'Sila', 2, '30000', 'unpaid', 'cash', 'rejected', '2025-08-18 22:03:57', '2025-08-18 22:04:51');
 
 -- ----------------------------
 -- Table structure for persistences
@@ -2036,7 +2090,7 @@ CREATE TABLE `persistences`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `persistences_code_unique`(`code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 790 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 816 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of persistences
@@ -2278,6 +2332,10 @@ INSERT INTO `persistences` VALUES (785, 1, 'wi3TbUkOlvH18LRfvU0ZGZwcTXJoKRWS', '
 INSERT INTO `persistences` VALUES (786, 1, 'geejziigEaSotp8KSzIHxVKKefcJiuHg', '2025-08-12 19:11:08', '2025-08-12 19:11:08');
 INSERT INTO `persistences` VALUES (787, 1, 'X9R1JRCpLBHgQvpGVocIWoeiHhVCedn4', '2025-08-13 06:12:52', '2025-08-13 06:12:52');
 INSERT INTO `persistences` VALUES (789, 1, '3h64Pw4Qxlu5rAvTdLmxjqxgi919vnTG', '2025-08-17 13:17:01', '2025-08-17 13:17:01');
+INSERT INTO `persistences` VALUES (791, 2, 'Q3rEshqcxAN15BH2l9rotGI9KcjDyW19', '2025-08-17 22:47:08', '2025-08-17 22:47:08');
+INSERT INTO `persistences` VALUES (792, 1, 'II2JHArrx7qCMEbkHzjiuNvaDqPcUUlG', '2025-08-18 06:05:20', '2025-08-18 06:05:20');
+INSERT INTO `persistences` VALUES (814, 2, 'aRTdUrhUqoT86CUu4s5mk1qzhars7tLG', '2025-08-18 21:59:16', '2025-08-18 21:59:16');
+INSERT INTO `persistences` VALUES (815, 3, 'sJYCjm6CDHCns7s2OAhDHefHYEK9FabI', '2025-08-18 21:59:31', '2025-08-18 21:59:31');
 
 -- ----------------------------
 -- Table structure for reminders
@@ -2310,7 +2368,8 @@ CREATE TABLE `role_users`  (
 -- Records of role_users
 -- ----------------------------
 INSERT INTO `role_users` VALUES (1, 1, '2025-07-18 14:53:02', '2025-07-18 14:53:02');
-INSERT INTO `role_users` VALUES (3, 2, '2025-07-18 15:23:14', '2025-07-18 15:23:14');
+INSERT INTO `role_users` VALUES (2, 2, '2025-08-17 22:46:34', '2025-08-17 22:46:34');
+INSERT INTO `role_users` VALUES (3, 3, '2025-08-18 20:33:35', '2025-08-18 20:33:35');
 INSERT INTO `role_users` VALUES (5, 4, '2025-07-18 15:23:42', '2025-07-18 15:23:42');
 INSERT INTO `role_users` VALUES (6, 6, '2025-07-18 15:22:46', '2025-07-18 15:22:46');
 INSERT INTO `role_users` VALUES (7, 2, '2025-07-18 15:24:16', '2025-07-18 15:24:16');
@@ -2389,7 +2448,7 @@ CREATE TABLE `tables`  (
 -- ----------------------------
 -- Records of tables
 -- ----------------------------
-INSERT INTO `tables` VALUES (3, 1, 'Luxury 201', '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'available', '2025-08-17 13:17:34', '2025-08-17 22:22:25');
+INSERT INTO `tables` VALUES (3, 1, 'Luxury 201', '3c07fdfc-62c6-4814-aa68-13dc7997bc45', 'available', '2025-08-17 13:17:34', '2025-08-18 22:04:51');
 INSERT INTO `tables` VALUES (4, 2, 'ST 101', 'f14335cf-f089-4c13-b2ba-c65811af1502', 'available', '2025-08-17 13:33:20', '2025-08-17 13:33:20');
 
 -- ----------------------------
@@ -2479,11 +2538,13 @@ CREATE TABLE `users`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `users_email_unique`(`email`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin@laskahotel.com', '$2y$10$HdpvjaogHilztbi4qNzbWubFIQezQCF6.qu/yUlfr8/rE4Zg43IA.', NULL, '2025-08-17 13:17:01', 'Surya', 'Mandala', '082332604746', '1981-11-23', NULL, '2022-07-05 06:35:41', '2025-08-17 13:17:01');
+INSERT INTO `users` VALUES (1, 'admin@laskahotel.com', '$2y$10$HdpvjaogHilztbi4qNzbWubFIQezQCF6.qu/yUlfr8/rE4Zg43IA.', NULL, '2025-08-18 21:58:01', 'Surya', 'Mandala', '082332604746', '1981-11-23', NULL, '2022-07-05 06:35:41', '2025-08-18 21:58:01');
+INSERT INTO `users` VALUES (2, 'kasir1@laskahotel.com', '$2y$10$2utu6XhYKyIDmYBFVmSVIu/O9GT0ICRhpn93oOBdv6QBdbDD3JE96', NULL, '2025-08-18 21:59:16', 'Riska', 'Maulidi', '082332604766', '1997-07-16', NULL, '2025-08-17 22:45:46', '2025-08-18 21:59:16');
+INSERT INTO `users` VALUES (3, 'koki1@laskahotel.com', '$2y$10$GPsPDvvxT6DuLCU9JNiPOu2tEkk7Sy89kjlUspgs.yplWVIN.JEMy', NULL, '2025-08-18 21:59:31', 'Kiko', 'Andriyani', '082332604767', '1993-07-17', NULL, '2025-08-18 20:32:24', '2025-08-18 21:59:31');
 
 SET FOREIGN_KEY_CHECKS = 1;

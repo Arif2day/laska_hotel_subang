@@ -37,26 +37,26 @@
             <i class="fas fa-fw fa-id-badge"></i>
             <span>Profile</span></a>
     </li>
-    {{-- <li class="nav-item {{ request()->is('permohonan-mutasi*') ? 'active' : '' }}">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePermohonanMutasi"
-            aria-expanded="true" aria-controls="collapsePermohonanMutasi">
+    <li class="nav-item {{ request()->is('order*') ? 'active' : '' }}">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrder"
+            aria-expanded="true" aria-controls="collapseOrder">
             <i class="fas fa-fw fa-database"></i>
-            <span>Permohonan Mutasi</span>
+            <span>Order</span>
         </a>
-        <div id="collapsePermohonanMutasi" class="collapse {{ request()->is('permohonan-mutasi*') ? 'show' : '' }}"
+        <div id="collapseOrder" class="collapse {{ request()->is('order*') ? 'show' : '' }}"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item {{ request()->is('permohonan-mutasi/permohonan') ? 'active' : '' }}" href="{{ url('permohonan-mutasi/permohonan') }}">
-                    Permohonan
+                <a class="collapse-item {{ request()->is('order/live') ? 'active' : '' }}" href="{{ url('order/live') }}">
+                    Live Order
                 </a>
-                <a class="collapse-item {{ request()->is('permohonan-mutasi/riwayat') ? 'active' : '' }}" href="{{ url('permohonan-mutasi/riwayat') }}">                    
-                    Riwayat
+                <a class="collapse-item {{ request()->is('order/riwayat') ? 'active' : '' }}" href="{{ url('order/riwayat') }}">                    
+                    Riwayat Order
                 </a>
             </div>
         </div>
-    </li> --}}
+    </li>
     
-    @if(!Sentinel::getUser()->inRole('super-admin'))
+    {{-- @if(!Sentinel::getUser()->inRole('super-admin'))
     <li class="nav-item {{ 
             request()->is('ftk/ftk') ? 'active' : '' 
             }}">
@@ -64,7 +64,7 @@
             <i class="fas fa-fw fa-id-badge"></i>
             <span>FTK</span></a>
     </li>
-    @endif
+    @endif --}}
     {{-- <hr class="sidebar-divider"> --}}
 
     {{-- <li class="nav-item {{ 

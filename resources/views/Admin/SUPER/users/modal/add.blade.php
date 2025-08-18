@@ -56,7 +56,7 @@
                             </div>
                         </div>
 
-                        <input type="hidden" id="linked1" name="linked1" value="{{url('user-manager')}}">
+                        <input type="hidden" id="linked1" name="linked1" value="{{url('master/user-manager')}}">
                     </form>
                 </div>
                 <div class="modal-footer">

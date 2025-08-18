@@ -36,6 +36,7 @@
 </head>
 
 <body id="page-top">
+    <audio id="notifSound" src="{{ asset('sounds/notification.mp3') }}" preload="auto"></audio>
     <div class='containerr' style="display: none">
         <div class='loader'>
             <div class='loader--dot'></div>
@@ -207,6 +208,84 @@
         //         }
         //     });
         //   }
+    </script>
+    <script>
+        let lastNotifCount = 0;
+        function loadNotifications() {
+            fetch("{{ route('notifications') }}")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.unread_count > lastNotifCount) {
+                        // Play sound kalau ada notifikasi baru
+                        playNotifSound();
+                    }
+                    lastNotifCount = data.unread_count;
+
+                    // update badge
+                    document.getElementById('counterNotif').innerText = data.unread_count;
+
+                    // update dropdown list
+                    let list = '';
+                    if(data.notifications.length){
+                        data.notifications.forEach(n => {
+                            list += `<div id="order${n.data.order_id}">
+                                        <a class="dropdown-item d-flex align-items-center" "javascript:void(0)" 
+             onclick="readNotification('${n.id}', '{{ url('/order/live') }}')">
+                                            <div class="mr-3">
+                                                <div class="icon-circle bg-primary">
+                                                    <i class="fas fa-hands text-white"></i>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="small text-gray-500">Notifikasi Order</div>
+                                                <span id="span-diskusi">${ n.data.message}</span>
+                                            </div>
+                                        </a>
+                                    </div>`;
+                        });
+                    } else {
+                        list = '<span class="dropdown-item">Tidak ada notifikasi</span>';
+                    }
+                    document.getElementById('notif-list').innerHTML = list;
+                })
+                .catch(err => console.error(err));
+        }
+
+        // cek tiap 10 detik
+        setInterval(loadNotifications, 10000);
+
+        // panggil pertama kali
+        loadNotifications();
+
+        function readNotification(id,url) {
+            fetch("/notifications/read/" + id, {
+                method: "POST",
+                headers: {
+                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                }
+            }).then(() => {
+                // setelah read → redirect ke halaman terkait
+                window.location.href = url;
+                loadNotifications();
+            });
+        }
+
+        function playNotifSound() {
+            let audio = document.getElementById("notifSound");
+            audio.play().catch((err) => {
+                console.warn("Suara gagal diputar, mungkin belum enable:", err);
+            });
+        }
+
+        document.getElementById("enableSoundBtn").addEventListener("click", function() {
+            let audio = document.getElementById("notifSound");
+            audio.play().then(() => {
+                audio.pause();
+                audio.currentTime = 0; // reset ke awal
+                console.log("Suara notifikasi aktif");
+            });
+            this.style.display = "none"; // tombol hilang setelah sekali klik
+        });
     </script>
     @yield('script')
 </body>

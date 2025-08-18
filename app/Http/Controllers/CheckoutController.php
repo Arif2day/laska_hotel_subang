@@ -12,6 +12,10 @@ use App\Models\Orders;
 use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Config;
+use App\Notifications\OrderCreatedNotification;
+use Illuminate\Support\Facades\Notification;
+
+use Sentinel;
 
 class CheckoutController extends Controller
 {
@@ -57,7 +61,20 @@ class CheckoutController extends Controller
                 $table->status="occupied";
                 $table->save();
                 DB::commit();
-    
+                // send notification
+                // kirim ke semua user dengan role admin & kasir
+                // ambil role admin
+                $adminRole = Sentinel::findRoleBySlug('super-admin');
+                $admins = $adminRole ? $adminRole->users()->with('roles')->get() : collect();
+
+                // ambil role kasir
+                $kasirRole = Sentinel::findRoleBySlug('admin');
+                $kasirs = $kasirRole ? $kasirRole->users()->with('roles')->get() : collect();
+
+                // gabungkan
+                $users = $admins->merge($kasirs);
+                Notification::send($users, new OrderCreatedNotification($order));
+
                 session(['pending_order_id' => $order->id, 'token' => $request->token]);
                 // Hapus session cart
                 session()->forget('cart');

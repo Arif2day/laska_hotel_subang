@@ -83,6 +83,7 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
         <script src="{{ asset('assets/js/main.js') }}"></script>
+        
         @yield('script')
     </body>
 </html>

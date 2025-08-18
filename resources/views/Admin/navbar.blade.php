@@ -44,7 +44,12 @@
                 </form>
             </div>
         </li>
-
+        <li class="nav-item dropdown no-arrow mx-1">
+            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <i id="enableSoundBtn" class="fas fa-volume-up fa-fw"></i>
+            </a>
+        </li>
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">
@@ -63,8 +68,11 @@
                 <h6 class="dropdown-header">
                     Notifikasi Baru
                 </h6>
+                <div id="notif-list">
+                    <span class="dropdown-item">Memuat...</span>
+                </div>
                 @foreach ($unread as $item)                    
-                    <div id="permohonan">
+                    {{-- <div id="permohonan">
                         <a class="dropdown-item d-flex align-items-center" href="{{url($item->data['url']).'?notification_id=' . $item->id}}">
                             <div class="mr-3">
                                 <div class="icon-circle bg-primary">
@@ -72,11 +80,11 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="small text-gray-500">Permohonan Mutasi APS</div>
+                                <div class="small text-gray-500">Notifikasi Order</div>
                                 <span id="span-diskusi">{{ $item->data['message'] }}</span>
                             </div>
                         </a>
-                    </div>
+                    </div> --}}
                 @endforeach
                 {{-- <div id="jawaban">
                     <a class="dropdown-item d-flex align-items-center" href="{{url('answer')}}">

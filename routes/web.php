@@ -14,6 +14,8 @@ use App\Http\Controllers\Super\TableClassController;
 use App\Http\Controllers\Super\TableController;
 use App\Http\Controllers\Super\MenuTypeController;
 use App\Http\Controllers\Super\MenuController;
+use App\Http\Controllers\Super\LiveOrderController;
+use App\Http\Controllers\Super\RiwayatOrderController;
 
 Sentinel::disableCheckpoints();
 /*
@@ -68,12 +70,29 @@ Route::group(['middleware' => 'sentinelmember'], function(){
 		Route::post('/periode-by-prodi', [DashboardController::class,'getChartKAByPeriode']);
 		Route::post('/periode-lulus-by-prodi', [DashboardController::class,'getChartKAByPeriodeLulus']);
 		Route::get('/test',[DashboardController::class,'test']);
-	});
-	
+	});	
 
 	Route::get('user-profile',[UserController::class,'userProfile']);
 	Route::post('user-profile-update-profil',[UserController::class,'update']);
 	Route::post('user-profile-update-password',[UserController::class,'updatePassword']);	
+
+	Route::group(['prefix'=>'order'],function(){
+		Route::group(['prefix'=>'live'],function(){
+			Route::get('/', [LiveOrderController::class,'index']);			
+			Route::post('/list', [LiveOrderController::class,'getOrderList']);
+			Route::get('/{order}/detail', [LiveOrderController::class, 'detail'])->name('kasir.live-order.detail');
+			Route::get('/{order}/invoice', [LiveOrderController::class, 'invoice'])->name('kasir.live-order.invoice');
+			Route::post('/payment/{order}', [LiveOrderController::class, 'payment'])->name('kasir.payment');
+			Route::post('/cancel/{order}', [LiveOrderController::class, 'cancel'])->name('kasir.cancel');
+			Route::post('/ready/{order}', [LiveOrderController::class, 'ready'])->name('kasir.ready');
+			Route::post('/done/{order}', [LiveOrderController::class, 'done'])->name('kasir.done');
+			Route::get('/{order}/nota', [LiveOrderController::class, 'nota'])->name('kasir.live-order.nota');
+		});
+		Route::group(['prefix'=>'riwayat'],function(){
+			Route::get('/', [RiwayatOrderController::class,'index']);			
+			Route::post('/list', [RiwayatOrderController::class,'getOrderList']);
+		});
+	});
 
 	Route::get('logout',[UserController::class,'logout']);
 });
@@ -124,3 +143,20 @@ Route::group(['middleware' => 'SAmember'],function(){
 Route::get('notfound',function(){
 	return abort(404);
 });
+
+Route::get('/notifications', function () {
+    $user = Sentinel::getUser();
+    return response()->json([
+        'unread_count' => $user->unreadNotifications()->count(),
+        'notifications' => $user->unreadNotifications()->take(10)->get(),
+    ]);
+})->name('notifications');
+
+Route::post('/notifications/read/{id}', function ($id) {
+    $user = Sentinel::getUser();
+    $notification = $user->notifications()->where('id', $id)->first();
+    if ($notification) {
+        $notification->markAsRead();
+    }
+    return response()->json(['success' => true]);
+})->name('notifications.read');
