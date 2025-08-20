@@ -22,8 +22,7 @@
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Total Menu</div>
                             <div class="h1 mb-0 font-weight-bold text-gray-800">
-                                {{-- {{ $units }} --}}
-                                1
+                                {{ $menus }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -43,8 +42,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Total Meja</div>
                             <div class="h1 mb-0 font-weight-bold text-gray-800">
-                                {{-- {{ $own_unit_count[0]->close_56 }} --}}
-                                1
+                                {{ $tables }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -67,11 +65,9 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h7 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{-- {{ $own_unit_count[0]->total_pegawai_aktif }} --}}1
+                                        {{ $available_tables }}
                                         of
-                                        {{-- {{ $own_unit_count[0]->total_allocation }}
-                                        ({{ $own_unit_count[0]->persentase_ftk }}%) --}}
-                                        1
+                                        {{ $tables }}
                                     </div>
                                 </div>                                                              
                             </div>
@@ -82,8 +78,8 @@
                     </div>
                     <div class="col mt-3">
                         <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:50%"
-                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-info" role="progressbar" style="width:{{ $available_tables==0?0:$available_tables/$tables*100 }}%"
+                                aria-valuenow="{{ $available_tables==0?0:$available_tables/$tables*100 }}" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>
@@ -98,16 +94,14 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                Kuota Meja
+                                Order Live Aprroved
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h7 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{-- {{ $own_unit_count[0]->total_pegawai_aktif }} --}}1
+                                        {{ $approved_order_lives }}
                                         of
-                                        {{-- {{ $own_unit_count[0]->total_allocation }}
-                                        ({{ $own_unit_count[0]->persentase_ftk }}%) --}}
-                                        1
+                                       {{ $order_lives}}
                                     </div>
                                 </div>                                                              
                             </div>
@@ -118,8 +112,8 @@
                     </div>
                     <div class="col mt-3">
                         <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-warning" role="progressbar" style="width:50%"
-                                aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width:{{ $approved_order_lives==0?0:$approved_order_lives/$order_lives*100 }}%"
+                                aria-valuenow="{{ $approved_order_lives==0?0:$approved_order_lives/$order_lives*100 }}" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>

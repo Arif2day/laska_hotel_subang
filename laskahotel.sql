@@ -11,7 +11,7 @@
  Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 18/08/2025 22:15:10
+ Date: 20/08/2025 15:11:34
 */
 
 SET NAMES utf8mb4;
@@ -1982,29 +1982,29 @@ CREATE TABLE `notifications`  (
 -- ----------------------------
 INSERT INTO `notifications` VALUES ('187ca606-abd2-46dc-a024-f4ee1dcc9888', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":6,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:17:54', '2025-08-18 21:17:26', '2025-08-18 21:17:54');
 INSERT INTO `notifications` VALUES ('2a95c384-31f7-4aef-b79a-015425a3dfb7', 'App\\Notifications\\OrderApprovedNotification', 'App\\Models\\Users', 3, '{\"message\":\"Order approved oleh admin dari meja Luxury 201\",\"order_id\":5,\"type\":\"Order Perlu Disajikan\",\"notifier\":\"admin\"}', '2025-08-18 20:40:48', '2025-08-18 20:40:13', '2025-08-18 20:40:48');
-INSERT INTO `notifications` VALUES ('347cbe0b-b892-44d3-a87d-4a225db7d175', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":10,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', NULL, '2025-08-18 22:02:32', '2025-08-18 22:02:32');
+INSERT INTO `notifications` VALUES ('347cbe0b-b892-44d3-a87d-4a225db7d175', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":10,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-20 14:52:29', '2025-08-18 22:02:32', '2025-08-20 14:52:29');
 INSERT INTO `notifications` VALUES ('43f29a41-017d-4fed-8057-adf01ac909fc', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":4}', '2025-08-18 19:29:07', '2025-08-18 19:19:19', '2025-08-18 19:19:19');
-INSERT INTO `notifications` VALUES ('477d5978-fff6-4d1e-a55a-f49a3d171b59', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":7,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', NULL, '2025-08-18 21:20:32', '2025-08-18 21:20:32');
+INSERT INTO `notifications` VALUES ('477d5978-fff6-4d1e-a55a-f49a3d171b59', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":7,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-20 14:52:40', '2025-08-18 21:20:32', '2025-08-20 14:52:40');
 INSERT INTO `notifications` VALUES ('60b596b3-eb8b-4ad6-8844-956049d89ec0', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":5,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-18 21:08:07', '2025-08-18 21:07:34', '2025-08-18 21:08:07');
-INSERT INTO `notifications` VALUES ('6c176012-a447-43a3-a2e3-7c6aac40a9a0', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:19:02', '2025-08-18 21:19:02');
+INSERT INTO `notifications` VALUES ('6c176012-a447-43a3-a2e3-7c6aac40a9a0', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-20 14:52:42', '2025-08-18 21:19:02', '2025-08-20 14:52:42');
 INSERT INTO `notifications` VALUES ('71e2ebe0-ee4e-41db-b51a-dfa2e62b95da', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:19:08', '2025-08-18 21:19:02', '2025-08-18 21:19:08');
 INSERT INTO `notifications` VALUES ('7ebe6450-0121-4009-85b6-eaf43473cd93', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":8,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:38:57', '2025-08-18 21:30:56', '2025-08-18 21:38:57');
 INSERT INTO `notifications` VALUES ('8362c443-32d3-4c6c-a6e9-3d85330da308', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":5}', '2025-08-18 20:30:00', '2025-08-18 19:34:02', '2025-08-18 20:30:00');
-INSERT INTO `notifications` VALUES ('8f529a82-d5f0-4332-a13a-abdcd1571012', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 22:00:50', '2025-08-18 22:00:50');
-INSERT INTO `notifications` VALUES ('8fa3422d-0db6-4566-872b-6c101a6e32db', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":11,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 22:03:57', '2025-08-18 22:03:57');
+INSERT INTO `notifications` VALUES ('8f529a82-d5f0-4332-a13a-abdcd1571012', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-20 14:52:32', '2025-08-18 22:00:50', '2025-08-20 14:52:32');
+INSERT INTO `notifications` VALUES ('8fa3422d-0db6-4566-872b-6c101a6e32db', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":11,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-20 14:52:26', '2025-08-18 22:03:57', '2025-08-20 14:52:26');
 INSERT INTO `notifications` VALUES ('94c16ab6-b0f0-47b7-a306-474796c165d3', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 22:01:18', '2025-08-18 22:00:50', '2025-08-18 22:01:18');
 INSERT INTO `notifications` VALUES ('9cfe5586-c591-4213-8c00-1f5167c44b80', 'App\\Notifications\\OrderApprovedNotification', 'App\\Models\\Users', 3, '{\"message\":\"Order approved oleh admin dari meja Luxury 201\",\"order_id\":10,\"type\":\"Order Perlu Disajikan\",\"notifier\":\"admin\"}', '2025-08-18 22:02:05', '2025-08-18 22:01:52', '2025-08-18 22:02:05');
 INSERT INTO `notifications` VALUES ('a2021624-e4fd-4300-8ec5-5bd32de263ea', 'App\\Notifications\\OrderApprovedNotification', 'App\\Models\\Users', 3, '{\"message\":\"Order approved oleh admin dari meja Luxury 201\",\"order_id\":7,\"type\":\"Order Perlu Disajikan\",\"notifier\":\"admin\"}', '2025-08-18 21:20:19', '2025-08-18 21:19:15', '2025-08-18 21:20:19');
 INSERT INTO `notifications` VALUES ('aada5166-e864-4947-8d94-e0dfaa83409a', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":7,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-18 21:20:47', '2025-08-18 21:20:32', '2025-08-18 21:20:47');
 INSERT INTO `notifications` VALUES ('bbd95fb9-acce-440c-b2e3-f6c544ae087a', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":5}', '2025-08-18 20:39:24', '2025-08-18 19:34:02', '2025-08-18 20:39:24');
-INSERT INTO `notifications` VALUES ('d57ac12e-b067-40ee-93dc-40f2d12e5b9c', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":9,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:44:40', '2025-08-18 21:44:40');
+INSERT INTO `notifications` VALUES ('d57ac12e-b067-40ee-93dc-40f2d12e5b9c', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":9,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-20 14:52:34', '2025-08-18 21:44:40', '2025-08-20 14:52:34');
 INSERT INTO `notifications` VALUES ('d6947466-5b98-4970-a72d-53ff99c71e2f', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":4}', '2025-08-18 19:29:11', '2025-08-18 19:19:19', '2025-08-18 19:19:19');
 INSERT INTO `notifications` VALUES ('e0b1d174-e30f-4f8e-901d-1d30326e0b7d', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":9,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 21:49:04', '2025-08-18 21:44:40', '2025-08-18 21:49:04');
 INSERT INTO `notifications` VALUES ('ea6b55bd-88f1-403c-a0f2-a3bb7d3bb1ca', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":10,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-18 22:02:47', '2025-08-18 22:02:32', '2025-08-18 22:02:47');
-INSERT INTO `notifications` VALUES ('ee14b0a4-9127-4eb2-9e0f-c5fcd76062c5', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":8,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:30:56', '2025-08-18 21:30:56');
+INSERT INTO `notifications` VALUES ('ee14b0a4-9127-4eb2-9e0f-c5fcd76062c5', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":8,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-20 14:52:37', '2025-08-18 21:30:56', '2025-08-20 14:52:37');
 INSERT INTO `notifications` VALUES ('ee624a91-ed2a-4851-b386-636736bf625d', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 2, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":11,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-18 22:05:11', '2025-08-18 22:03:57', '2025-08-18 22:05:11');
-INSERT INTO `notifications` VALUES ('ef535301-d0b7-4d3b-9ec0-367b22f6cb23', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":6,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', NULL, '2025-08-18 21:17:26', '2025-08-18 21:17:26');
-INSERT INTO `notifications` VALUES ('fbbb6f84-7d0a-43e0-be50-61d2948aeb98', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":5,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', NULL, '2025-08-18 21:07:34', '2025-08-18 21:07:34');
+INSERT INTO `notifications` VALUES ('ef535301-d0b7-4d3b-9ec0-367b22f6cb23', 'App\\Notifications\\OrderCreatedNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order baru dari meja Luxury 201\",\"order_id\":6,\"type\":\"Order Baru\",\"notifier\":\"tamu\"}', '2025-08-20 14:52:46', '2025-08-18 21:17:26', '2025-08-20 14:52:46');
+INSERT INTO `notifications` VALUES ('fbbb6f84-7d0a-43e0-be50-61d2948aeb98', 'App\\Notifications\\OrderReadyToServeNotification', 'App\\Models\\Users', 1, '{\"message\":\"Order siap untuk dihidangkan ke meja Luxury 201\",\"order_id\":5,\"type\":\"Order Siap Disajikan\",\"notifier\":\"koki\"}', '2025-08-20 14:52:49', '2025-08-18 21:07:34', '2025-08-20 14:52:49');
 
 -- ----------------------------
 -- Table structure for order_details
@@ -2090,7 +2090,7 @@ CREATE TABLE `persistences`  (
   `updated_at` timestamp(0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE,
   UNIQUE INDEX `persistences_code_unique`(`code`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 816 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 818 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of persistences
@@ -2336,6 +2336,8 @@ INSERT INTO `persistences` VALUES (791, 2, 'Q3rEshqcxAN15BH2l9rotGI9KcjDyW19', '
 INSERT INTO `persistences` VALUES (792, 1, 'II2JHArrx7qCMEbkHzjiuNvaDqPcUUlG', '2025-08-18 06:05:20', '2025-08-18 06:05:20');
 INSERT INTO `persistences` VALUES (814, 2, 'aRTdUrhUqoT86CUu4s5mk1qzhars7tLG', '2025-08-18 21:59:16', '2025-08-18 21:59:16');
 INSERT INTO `persistences` VALUES (815, 3, 'sJYCjm6CDHCns7s2OAhDHefHYEK9FabI', '2025-08-18 21:59:31', '2025-08-18 21:59:31');
+INSERT INTO `persistences` VALUES (816, 1, 'QxrWQNuRUXKWfiXj7La94Um9h3mCfaQ2', '2025-08-20 14:52:18', '2025-08-20 14:52:18');
+INSERT INTO `persistences` VALUES (817, 1, 'eBrpjVKL0M6yLEPwk7ja316lj9LJbdTv', '2025-08-20 14:55:21', '2025-08-20 14:55:21');
 
 -- ----------------------------
 -- Table structure for reminders
@@ -2543,7 +2545,7 @@ CREATE TABLE `users`  (
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin@laskahotel.com', '$2y$10$HdpvjaogHilztbi4qNzbWubFIQezQCF6.qu/yUlfr8/rE4Zg43IA.', NULL, '2025-08-18 21:58:01', 'Surya', 'Mandala', '082332604746', '1981-11-23', NULL, '2022-07-05 06:35:41', '2025-08-18 21:58:01');
+INSERT INTO `users` VALUES (1, 'admin@laskahotel.com', '$2y$10$HdpvjaogHilztbi4qNzbWubFIQezQCF6.qu/yUlfr8/rE4Zg43IA.', NULL, '2025-08-20 14:55:21', 'Surya', 'Mandala', '082332604746', '1981-11-23', NULL, '2022-07-05 06:35:41', '2025-08-20 14:55:21');
 INSERT INTO `users` VALUES (2, 'kasir1@laskahotel.com', '$2y$10$2utu6XhYKyIDmYBFVmSVIu/O9GT0ICRhpn93oOBdv6QBdbDD3JE96', NULL, '2025-08-18 21:59:16', 'Riska', 'Maulidi', '082332604766', '1997-07-16', NULL, '2025-08-17 22:45:46', '2025-08-18 21:59:16');
 INSERT INTO `users` VALUES (3, 'koki1@laskahotel.com', '$2y$10$GPsPDvvxT6DuLCU9JNiPOu2tEkk7Sy89kjlUspgs.yplWVIN.JEMy', NULL, '2025-08-18 21:59:31', 'Kiko', 'Andriyani', '082332604767', '1993-07-17', NULL, '2025-08-18 20:32:24', '2025-08-18 21:59:31');
 
