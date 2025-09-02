@@ -1,29 +1,29 @@
-    {{-- Modal Ubah TableClass --}}
-    <div class="modal fade" id="editTableClassModal" tabindex="-1" role="dialog" aria-labelledby="editTableClassModalLabel"
+    {{-- Modal Ubah PlaceCategory --}}
+    <div class="modal fade" id="editPlaceCategoryModal" tabindex="-1" role="dialog" aria-labelledby="editPlaceCategoryModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editTableClassModalLabel">Edit Table Class</h5>
+                    <h5 class="modal-title" id="editPlaceCategoryModalLabel">Edit Place Category</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                        onclick="clearEditFormTableClass()">
+                        onclick="clearEditFormPlaceCategory()">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="formaddTableClass">
+                    <form id="formaddPlaceCategory">
                         <div class="form-group">
-                            <label for="e_name" class="col-form-label">Table Class Name:</label>
+                            <label for="e_name" class="col-form-label">Place Category Name:</label>
                             <input type="text" class="form-control" id="e_name" value="">
                         </div>
                         <input type="hidden" name="e_id" id="e_id">
-                        <input type="hidden" id="linked2" name="linked2" value="{{url('master/table-class/update')}}">
+                        <input type="hidden" id="linked2" name="linked2" value="{{url('master/place-category/update')}}">
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal"
-                        onclick="clearEditFormTableClass()">Cancel</button>
-                    <button type="button" class="btn btn-info" onclick="updateTableClass()">Update</button>
+                        onclick="clearEditFormPlaceCategory()">Cancel</button>
+                    <button type="button" class="btn btn-info" onclick="updatePlaceCategory()">Update</button>
                 </div>
             </div>
         </div>

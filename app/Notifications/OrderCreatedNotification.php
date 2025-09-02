@@ -25,7 +25,7 @@ class OrderCreatedNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => "Order baru dari meja {$this->order->table->table_name}",
+            'message' => "Order baru dari tempat order {$this->order->place->place_name}",
             'order_id' => $this->order->id,
             'type'=>'Order Baru',
             'notifier'=>'tamu'

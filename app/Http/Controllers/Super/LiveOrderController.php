@@ -4,8 +4,8 @@ namespace App\Http\Controllers\SUPER;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TableClasses;
-use App\Models\Tables;
+use App\Models\PlaceCategories;
+use App\Models\Places;
 use App\Models\Orders;
 use App\Helpers\ImageHelper;
 use Illuminate\Support\Facades\File;
@@ -18,19 +18,19 @@ use Illuminate\Support\Facades\Notification;
 class LiveOrderController extends Controller
 {
     public function index() {
-      $table_classes = TableClasses::all();
-        return view('Admin.SUPER.order-live.index',compact(['table_classes']));
+      $place_categories = PlaceCategories::all();
+        return view('Admin.SUPER.order-live.index',compact(['place_categories']));
     }
 
     public function getOrderList(Request $req) {
-      $table_class_id = $req->table_class; 
+      $place_category_id = $req->place_category; 
       $user = Sentinel::getUser();
       if ($req->ajax()) {
-            $data = Orders::with(['table.tableClass','details'])
-            ->whereHas('table', function ($q) use ($table_class_id) {
-                $q->whereHas('tableClass', function ($q2) use ($table_class_id) {
-                    if($table_class_id != "all") {
-                        $q2->where('id', $table_class_id);
+            $data = Orders::with(['place.placeCategory','details'])
+            ->whereHas('place', function ($q) use ($place_category_id) {
+                $q->whereHas('placeCategory', function ($q2) use ($place_category_id) {
+                    if($place_category_id != "all") {
+                        $q2->where('id', $place_category_id);
                     }
                 });
             })
@@ -116,19 +116,19 @@ class LiveOrderController extends Controller
 
     public function detail(Orders $order)
     {
-        $order->load('details.menu', 'table');
+        $order->load('details.menu', 'place');
         return response()->json($order);
     }
     
     public function invoice(Orders $order)
     {
-        $order->load('details.menu', 'table');
+        $order->load('details.menu', 'place');
         return response()->json($order);
     }
 
     public function nota(Orders $order)
     {
-        $order->load('details.menu', 'table');
+        $order->load('details.menu', 'place');
         return view('Admin.SUPER.order-live.nota', compact('order'));
     }
 
@@ -167,9 +167,9 @@ class LiveOrderController extends Controller
           'validator_id'=>Sentinel::getUser()->id,
             'status' => 'rejected', 
         ]);
-        $table = Tables::where('id',$order->table_id)->first();
-        $table->status = 'available';
-        $table->save();
+        $place = Places::where('id',$order->place_id)->first();
+        $place->status = 'available';
+        $place->save();
 
         // kalau request ajax
         if ($request->ajax()) {
@@ -223,9 +223,9 @@ class LiveOrderController extends Controller
             'status' => 'served', 
         ]);
 
-        $table = Tables::where('id',$order->table_id)->first();
-        $table->status = 'available';
-        $table->save();
+        $place = Places::where('id',$order->place_id)->first();
+        $place->status = 'available';
+        $place->save();
 
         // kalau request ajax
         if ($request->ajax()) {

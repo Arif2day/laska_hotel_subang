@@ -22,7 +22,7 @@
         <hr>
         <p><strong>Nota Order</strong></p>
         <p>ID: {{ $order->id }} | {{ $order->created_at->format('d/m/Y H:i') }}</p>
-        <p>Meja: {{ $order->table->table_name }}</p>
+        <p>Place: {{ $order->place->place_name }}</p>
         <p>Reservator: {{ $order->reservator_name }}</p>
         <hr>
         <table>

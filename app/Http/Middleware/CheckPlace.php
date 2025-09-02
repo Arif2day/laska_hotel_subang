@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use App\Models\Tables;
+use App\Models\Places;
 
-class CheckTable
+class CheckPlace
 {
     /**
      * Handle an incoming request.
@@ -21,19 +21,19 @@ class CheckTable
 
         if (!$token) {
             return redirect()->route('beranda')
-                ->with('error', 'QR-Code tidak ditemukan, silakan scan QR dari meja.');
+                ->with('error', 'QR-Code tidak ditemukan, silakan scan QR order yang tersedia.');
         }
 
-        $table = Tables::where('table_token', $token)->first();
+        $place = Places::where('place_token', $token)->first();
 
-        if (!$table) {
+        if (!$place) {
             return redirect()->route('beranda')
                 ->with('error', 'QR-Code tidak valid.');
         }
 
-        if ($table->status === 'occupied') {
+        if ($place->status === 'occupied') {
             return redirect()->route('beranda')
-                ->with('error', 'Meja ini sedang digunakan.');
+                ->with('error', 'Tempat order ini sedang digunakan.');
         }
 
         // Lolos validasi

@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Orders extends Model
 {
   protected $fillable = [
-    'table_id',
-    'table_token',
+    'place_id',
+    'place_token',
     'reservator_name',
     'validator_id',
         'total_amount',
@@ -18,14 +18,14 @@ class Orders extends Model
   ];
   protected $table = 'orders';
   
-  public function table()
+  public function place()
   {
-      return $this->belongsTo('App\Models\Tables', 'table_id');    
+      return $this->belongsTo('App\Models\Places', 'place_id');    
   }
 
-  public function tableClass()
+  public function placeCategory()
   {
-      return $this->belongsTo('App\Models\Tables', 'table_class_id');    
+      return $this->belongsTo('App\Models\PlaceCategories', 'place_category_id');    
   }
 
   public function validator()

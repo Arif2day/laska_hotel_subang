@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Table Class</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Kategori Tempat Order (Place Categories)</h1>
     </div>
 
     {{-- Filter --}}
@@ -53,35 +53,35 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Table Class</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Kategori Tempat Order (Place Categories)</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="row float-right mr-0 mb-2">
                         {{-- <button class="btn btn-sm btn-primary mr-2" disabled>
                             <i class="fas fa-fw fa-print"></i> Cetak Laporan</button> --}}
-                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#addTableClassModal">
-                            <i class="fas fa-fw fa-plus-circle"></i> Add Table Class</button>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#addPlaceCategoryModal">
+                            <i class="fas fa-fw fa-plus-circle"></i> Add Place Category</button>
                     </div>
                     <div class="text-xs">
-                        <table class="table table-class-datatable display" style="width:100%;">
+                        <table class="table place-category-datatable display" style="width:100%;">
                             <thead class="text-center">
                                 <th style="width: 20px">NO</th>
-                                <th>TABLE CLASS NAME</th>
+                                <th>PLACE CATEGORY NAME</th>
                                 <th style="width: 100px">ACTION</th>
                             </thead>
                             <tbody></tbody>
                         </table>
-                        <input type="hidden" id="urllist" name="urllist" value="{{url('master/table-class/list')}}">
-                        <input type="hidden" id="urldel" name="urldel" value="{{url('master/table-class')}}">                        
+                        <input type="hidden" id="urllist" name="urllist" value="{{url('master/place-category/list')}}">
+                        <input type="hidden" id="urldel" name="urldel" value="{{url('master/place-category')}}">                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    @include('Admin.SUPER.table-class.modal.add')
-    @include('Admin.SUPER.table-class.modal.edit')
+    @include('Admin.SUPER.place-category.modal.add')
+    @include('Admin.SUPER.place-category.modal.edit')
 
 </div>
 @endsection
@@ -101,7 +101,7 @@
         }
     });
 
-    var table = $('.table-class-datatable').DataTable({   
+    var table = $('.place-category-datatable').DataTable({   
         pageLength : 25,
         dom: 'lfrtip',        
         processing: true,
@@ -125,7 +125,7 @@
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'class_name', name: 'class_name'},
+            {data: 'category_name', name: 'category_name'},
             {data: 'action', name:'action'},               
         ]       
     });
@@ -134,10 +134,10 @@
         table.ajax.reload();
     }
 
-    function deleteTableClass(params) {
+    function deletePlaceCategory(params) {
         Swal.fire({
             title: 'Yakin?',
-            text: "Anda akan menghapus Data Table Class.",
+            text: "Anda akan menghapus Data Place Category.",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -176,26 +176,26 @@
     }   
 
     // Form Sort Function
-    function clearFormTableClass() {
+    function clearFormPlaceCategory() {
         document.getElementById('name').value='';
     } 
 
-    function clearEditFormTableClass() {
+    function clearEditFormPlaceCategory() {
         document.getElementById('e_id').value='';
         document.getElementById('e_name').value='';
     } 
 
-    function saveTableClass() {
+    function savePlaceCategory() {
         let name = $('input[id=name').val();
         
         if (name=="") {
-            Swal.fire({icon: 'error', title: 'Oops...',text: "Table Class Name Required!",});
+            Swal.fire({icon: 'error', title: 'Oops...',text: "Place Category Name Required!",});
         }
         else{
             let datar = {};
             datar['_method']='POST';
             datar['_token']=$('._token').data('token');
-            datar['class_name']=name;
+            datar['category_name']=name;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -208,8 +208,8 @@
             success: function(data) {
                 if (data.error==false) {
                     table.ajax.reload();
-                    clearFormTableClass();
-                    $('#addTableClassModal').modal('hide');
+                    clearFormPlaceCategory();
+                    $('#addPlaceCategoryModal').modal('hide');
                     Swal.fire({icon: 'success', title: 'Horray...',text: data.message});
                 }else{
                     Swal.fire({
@@ -223,19 +223,19 @@
         }
     } 
 
-    function updateTableClass() {
+    function updatePlaceCategory() {
         let id = $('input[id=e_id').val();
         let name = $('input[id=e_name').val();        
 
         if (name=="") {
-            Swal.fire({icon: 'error', title: 'Oops...',text: "Class Name Required!",});
+            Swal.fire({icon: 'error', title: 'Oops...',text: "Category Name Required!",});
         }
         else{
             let datar = {};
             datar['_method']='POST';
             datar['_token']=$('._token').data('token');
             datar['id']=id;
-            datar['class_name']=name;
+            datar['category_name']=name;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -248,8 +248,8 @@
             success: function(data) {
                 if (data.error==false) {
                     table.ajax.reload();
-                    clearEditFormTableClass();
-                    $('#editTableClassModal').modal('hide');
+                    clearEditFormPlaceCategory();
+                    $('#editPlaceCategoryModal').modal('hide');
                     Swal.fire({icon: 'success', title: 'Horray...',text: data.message});
                 }else{
                     Swal.fire({
@@ -263,14 +263,14 @@
         }
     } 
 
-    $(document).on('click', '.editTableClassBtn', function () {
+    $(document).on('click', '.editPlaceCategoryBtn', function () {
         // Ambil data dari atribut tombol
         var id = $(this).data('id');
-        var name = $(this).data('class_name');
+        var name = $(this).data('category_name');
 
         // Set data ke form dalam modal
-        $('#editTableClassModal input[id="e_id"]').val(id);
-        $('#editTableClassModal input[id="e_name"]').val(name);
+        $('#editPlaceCategoryModal input[id="e_id"]').val(id);
+        $('#editPlaceCategoryModal input[id="e_name"]').val(name);
     });
 </script>
 @endsection

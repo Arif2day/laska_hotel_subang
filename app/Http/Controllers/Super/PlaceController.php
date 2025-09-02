@@ -4,43 +4,43 @@ namespace App\Http\Controllers\SUPER;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TableClasses;
-use App\Models\Tables;
+use App\Models\PlaceCategories;
+use App\Models\Places;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use Sentinel;
 use DataTables;
 use Str;
 
-class TableController extends Controller
+class PlaceController extends Controller
 {
     public function index() {
-      $table_classes = TableClasses::all();
-        return view('Admin.SUPER.table.index',compact(['table_classes']));
+      $place_categories = PlaceCategories::all();
+        return view('Admin.SUPER.place.index',compact(['place_categories']));
     }
 
-    public function getTableList(Request $req) {
+    public function getPlaceList(Request $req) {
         if ($req->ajax()) {
-            $data = Tables::with('tableClass')->get();
+            $data = Places::with('placeCategory')->get();
             
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn =
-                    '<button class="ml-1 mb-1 btn btn-sm btn-primary editTableBtn" title="Edit Table"'. 
+                    '<button class="ml-1 mb-1 btn btn-sm btn-primary editPlaceBtn" title="Edit Place"'. 
                     ' data-id="'.$row->id.'"'.
-                    ' data-table_class_id="'.$row->table_class_id.'"'.
-                    ' data-table_name="'.$row->table_name.'"'.
+                    ' data-place_category_id="'.$row->place_category_id.'"'.
+                    ' data-place_name="'.$row->place_name.'"'.
                     ' data-toggle="modal"'.
-                    ' data-target="#editTableModal"'.                   
+                    ' data-target="#editPlaceModal"'.                   
                         '><i class="fa fa-pen"></i></button>'.
-                    '<button class="ml-1 mb-1 btn btn-sm btn-danger" title="Delete Table" onClick="deleteTable('.$row->id.')"'.
+                    '<button class="ml-1 mb-1 btn btn-sm btn-danger" title="Delete Place" onClick="deletePlace('.$row->id.')"'.
                         '><i class="fa fa-trash"></i></button>'
                     ;
                     return $actionBtn;
                 })
                 ->addColumn('qrcode', function ($row) {
                   $qr = QrCode::size(100)
-                  ->generate(url('/menu?token='.$row->table_token));
+                  ->generate(url('/menu?token='.$row->place_token));
           
                   return '<div class="qr-wrapper" id="qr-'.$row->id.'">
                               '.$qr.'
@@ -60,15 +60,15 @@ class TableController extends Controller
       $res['message']="";
       $res['data']='';
       try {
-        $data = new Tables();  
-        $data->table_class_id = $request->table_class_id;
-        $data->table_name = $request->table_name;
-        $data->table_token = Str::uuid()->toString();
+        $data = new Places();  
+        $data->place_category_id = $request->place_category_id;
+        $data->place_name = $request->place_name;
+        $data->place_token = Str::uuid()->toString();
         if($data->save()){
-          $res['message']="Table saved successfully.";
+          $res['message']="Place saved successfully.";
         }else{
           $res['error']=true;
-          $res['message']="Table failed to save!";
+          $res['message']="Place failed to save!";
         }
       } catch (\Exception $e) {
         $res['error']=true;
@@ -84,15 +84,15 @@ class TableController extends Controller
       $res['message']="";
       $res['data']='';
 
-      $data = Tables::where('id',$request->id)->first();
+      $data = Places::where('id',$request->id)->first();
       try {
-        $data->table_class_id = $request->table_class_id;
-        $data->table_name = $request->table_name;
+        $data->place_category_id = $request->place_category_id;
+        $data->place_name = $request->place_name;
         if($data->save()){
-          $res['message']="Table updated successfully.";
+          $res['message']="Place updated successfully.";
         }else{
           $res['error']=true;
-          $res['message']="Table failed to update!";
+          $res['message']="Place failed to update!";
         }
       } catch (\Exception $e) {
         $res['error']=true;
@@ -108,12 +108,12 @@ class TableController extends Controller
       $res['data']='';
       $res['message']="";
       // delete
-      $data = Tables::where('id',$request->id)->first();
+      $data = Places::where('id',$request->id)->first();
       if ($data->delete()) {
-        $res['message']="Table has been deleted.";
+        $res['message']="Place has been deleted.";
       }else{
         $res['error']=true;
-        $res['message']="Fail to delete table!";
+        $res['message']="Fail to delete place!";
       }
       // redirect
       return response()->json($res);

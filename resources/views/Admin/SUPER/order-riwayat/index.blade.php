@@ -21,11 +21,11 @@
         <div id="collapseFilter" class="collapse show" aria-labelledby="headingFilter" data-parent="#accordion">
             <div class="row m-2">
                 <div class="col-xl-4 mb-2">
-                    <label class="small mb-1">Jenis Table</label>
-                    <select id="table_class" class="form-select" aria-label="role">
+                    <label class="small mb-1">Kategori Tempat Order</label>
+                    <select id="place_category" class="form-select" aria-label="role">
                         <option value="all" selected>Semua</option>
-                        @foreach ($table_classes as $table_class)                            
-                            <option value="{{ $table_class->id }}">{{ $table_class->class_name }}</option>
+                        @foreach ($place_categories as $place_category)                            
+                            <option value="{{ $place_category->id }}">{{ $place_category->category_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -68,7 +68,7 @@
                             <thead class="text-center">
                                 <th>NO</th>
                                 <th>RESERVATOR</th>
-                                <th>TABLE</th>
+                                <th>PLACE</th>
                                 <th>TOTAL ITEM</th>
                                 <th>TOTAL TAGIHAN</th>
                                 <th>PAYMENT</th>
@@ -117,7 +117,7 @@
             type:"POST",
             data:function(d){
                 d._token = $('._token').data('token')
-                d.table_class = $('#table_class option:selected').val()
+                d.place_category = $('#place_category option:selected').val()
             }}, 
         createdRow: function(row, data, dataIndex, cells) {
             // console.log( data.FeederAKM );
@@ -133,7 +133,7 @@
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'reservator_name', name: 'reservator_name'},
-            {data: 'table.table_name', name: 'table.table_name'},
+            {data: 'place.place_name', name: 'place.place_name'},
             {data: 'total_item', name: 'total_item'},
             {data: 'total_amount', name: 'total_amount'},
             {data: 'payment_status', name: 'payment_status'},
@@ -156,7 +156,7 @@
                 let id = $(this).data('id');
                 $.get("{{ url('order/live') }}/"+id+"/detail", function(data){
                     let html = `<p><strong>Reservator:</strong> ${data.reservator_name}</p>
-                                <p><strong>Meja:</strong> ${data.table.table_name}</p>
+                                <p><strong>Place:</strong> ${data.place.place_name}</p>
                                 <table class="table"><tr><th>Menu</th><th>Qty</th><th>Harga</th><th>Sub</th><th>Note</th></tr>`;
                     data.details.forEach(d => {
                         html += `<tr><td>${d.menu.menu_name}</td><td>${d.quantity}</td><td>Rp.${thousand(d.price)}</td><td>Rp.${thousand(d.price*d.quantity)}</td><td>${d.note}</td></tr>`;
@@ -175,7 +175,7 @@
                 $.get("{{ url('order/live') }}/"+id+"/invoice", function(data){
                     let total = data.total_amount;
                     let html = `<h5>Tagihan untuk ${data.reservator_name}</h5>
-                                <p>Meja: ${data.table.table_name}</p>
+                                <p>Place: ${data.place.place_name}</p>
                                 <ul>`;
                     data.details.forEach(d => {
                         html += `<li>${d.menu.menu_name} x ${d.quantity} = ${d.quantity * d.price}</li>`;

@@ -7,7 +7,7 @@ use PDF;
 use iio\libmergepdf\Merger;
 use App\Models\Users;
 use App\Models\Menus;
-use App\Models\Tables;
+use App\Models\Places;
 use App\Models\Orders;
 use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;
@@ -31,13 +31,13 @@ class CheckoutController extends Controller
         DB::beginTransaction();
         try {
             // Simpan ke tabel orders
-            $table = Tables::where('table_token',$request->token)->first();
-            if($table->status=="available")
+            $place = Places::where('place_token',$request->token)->first();
+            if($place->status=="available")
             {
 
                 $order = Orders::create([
-                    'table_id'     => $table->id,   // bisa juga ambil dari token meja
-                    'table_token'        => $request->token,
+                    'place_id'     => $place->id,   // bisa juga ambil dari token meja
+                    'place_token'        => $request->token,
                     'reservator_name'        => $request->reservator_name,
                     'total_amount' => collect($cart)->sum(function ($item) {
                         return $item['price'] * $item['qty'];
@@ -58,8 +58,8 @@ class CheckoutController extends Controller
                         'note'        =>$item['note']
                     ]);
                 }
-                $table->status="occupied";
-                $table->save();
+                $place->status="occupied";
+                $place->save();
                 DB::commit();
                 // send notification
                 // kirim ke semua user dengan role admin & kasir
@@ -87,7 +87,7 @@ class CheckoutController extends Controller
             }else{
                 return response()->json([
                     'success' => false,
-                    'message' => 'Meja sedang digunakan',
+                    'message' => 'Tempat order sedang digunakan',
                 ]);
             }
             // return redirect()->route('payment.show', $order->id)

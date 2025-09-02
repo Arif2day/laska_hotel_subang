@@ -42,5 +42,5 @@
         </div>
     </div>
 
-    <p class="footer__copy">Laska Restaurant &#169; 2025 designed by Bedimcode. All right reserved<a href="{{ 'login' }}">.</a></p>
+    <p class="footer__copy">Laska Restaurant &#169; 2025 designed by Bedimcode. All right reserved<a href="{{ url('login') }}">.</a></p>
 </footer>

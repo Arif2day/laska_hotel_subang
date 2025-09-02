@@ -246,7 +246,31 @@
                     } else {
                         list = '<span class="dropdown-item">Tidak ada notifikasi</span>';
                     }
+
+                    // kalau ada unread → tambahin tombol mark all read
+                    if (data.unread_count > 0) {
+                        list += `<div class="dropdown-item text-center">
+                                    <button id="markAllRead" class="btn btn-sm btn-link">
+                                        Tandai semua dibaca
+                                    </button>
+                                </div>`;
+                    }
+
                     document.getElementById('notif-list').innerHTML = list;
+
+                    // binding tombol markAllRead kalau ada
+                    if (data.unread_count > 0) {
+                        document.getElementById("markAllRead").addEventListener("click", function() {
+                            fetch("{{ route('notifications.readAll') }}", {
+                                method: "POST",
+                                headers: {
+                                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
+                                }
+                            }).then(() => {
+                                loadNotifications();
+                            });
+                        });
+                    }
                 })
                 .catch(err => console.error(err));
         }

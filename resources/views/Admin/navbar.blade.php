@@ -66,7 +66,7 @@
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
                 aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
-                    Notifikasi Baru
+                    Notifikasi Baru                    
                 </h6>
                 <div id="notif-list">
                     <span class="dropdown-item">Memuat...</span>
@@ -101,6 +101,7 @@
                 </div> --}}
 
                 {{-- <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a> --}}
+                
             </div>
         </li>
 

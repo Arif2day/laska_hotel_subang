@@ -40,9 +40,9 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Total Meja</div>
+                                Total Tempat Order</div>
                             <div class="h1 mb-0 font-weight-bold text-gray-800">
-                                {{ $tables }}
+                                {{ $places }}
                             </div>
                         </div>
                         <div class="col-auto">
@@ -60,14 +60,14 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Kuota Meja
+                                Kuota Tempat Order
                             </div>
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h7 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        {{ $available_tables }}
+                                        {{ $available_places }}
                                         of
-                                        {{ $tables }}
+                                        {{ $places }}
                                     </div>
                                 </div>                                                              
                             </div>
@@ -78,8 +78,8 @@
                     </div>
                     <div class="col mt-3">
                         <div class="progress progress-sm mr-2">
-                            <div class="progress-bar bg-info" role="progressbar" style="width:{{ $available_tables==0?0:$available_tables/$tables*100 }}%"
-                                aria-valuenow="{{ $available_tables==0?0:$available_tables/$tables*100 }}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-bar bg-info" role="progressbar" style="width:{{ $available_places==0?0:$available_places/$places*100 }}%"
+                                aria-valuenow="{{ $available_places==0?0:$available_places/$places*100 }}" aria-valuemin="0" aria-valuemax="100">
                             </div>
                         </div>
                     </div>

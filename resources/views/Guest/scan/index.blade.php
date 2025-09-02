@@ -2,7 +2,7 @@
 @section('content')
 <main class="l-main">
     <div class="container" style="margin-top: 100px!important">
-        <h4 class="text-center mb-4">📷 Scan QR-Code Meja</h4>
+        <h4 class="text-center mb-4">📷 Scan QR-Code Tempat Order</h4>
     
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">

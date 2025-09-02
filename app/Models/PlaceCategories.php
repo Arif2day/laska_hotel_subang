@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TableClasses extends Model
+class PlaceCategories extends Model
 {
   protected $fillable = [''];
-  protected $table = 'table_classes';
+  protected $table = 'place_categories';
 }

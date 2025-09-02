@@ -25,7 +25,7 @@ class OrderReadyToServeNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => "Order siap untuk dihidangkan ke meja {$this->order->table->table_name}",
+            'message' => "Order siap untuk dihidangkan ke tempat order {$this->order->place->place_name}",
             'order_id' => $this->order->id,
             'type'=>'Order Siap Disajikan',
             'notifier'=>'koki'

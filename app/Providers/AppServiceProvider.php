@@ -30,21 +30,29 @@ class AppServiceProvider extends ServiceProvider
         if (env('APP_ENV') === 'production') {
             URL::forceScheme('https');
         }
+        
         View::composer('*', function ($view) {
             $token = request()->query('token') ?? session('token'); // ambil dari query atau session
             $pendingOrder = null;
             $onProcessOrder = null;
             
             if($token){
-                $pendingOrder = Orders::where('table_token', $token)
+                $pendingOrder = Orders::where('place_token', $token)
                                       ->where('status', 'pending')
                                       ->latest()
                                       ->first();
-                $onProcessOrder = Orders::where('table_token', $token)
+                $onProcessOrder = Orders::where('place_token', $token)
                                 ->where('status', 'approved')
                                 ->latest()
                                 ->first();
+                
+                                // kalau tidak ada pending/approved -> hapus session token
+                if (!$pendingOrder && !$onProcessOrder) {
+                    session()->forget('token');
+                    $token = null; // biar variabel view juga ikut kosong
+                }
             }
+            
             $cart = session('cart');
             $view->with(compact('pendingOrder', 'token','onProcessOrder','cart'));
         });

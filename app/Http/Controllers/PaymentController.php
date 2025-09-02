@@ -7,7 +7,6 @@ use PDF;
 use iio\libmergepdf\Merger;
 use App\Models\Users;
 use App\Models\Menus;
-use App\Models\Tables;
 use App\Models\Orders;
 use App\Models\OrderDetails;
 use Illuminate\Support\Facades\DB;

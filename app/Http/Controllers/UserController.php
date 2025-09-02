@@ -5,10 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Users;
-use App\Models\HistoryNilai;
-use App\Models\BiodataMahasiswa;
-use App\Models\TranskripNilai;
-use App\Helpers\NeoUmumHelper;
 use Sentinel;
 use Redirect;
 use File;
@@ -20,10 +16,6 @@ class UserController extends Controller
   {
     if (Sentinel::check())
     {
-        if((Sentinel::getUser()->inRole('mahasiswa'))){
-          $user = Sentinel::check();
-          $this->clearTempData($user);      
-        }
         return redirect('dashboard');
     }
     else
@@ -45,9 +37,6 @@ class UserController extends Controller
       $user = Sentinel::authenticate($credentials);
       if ($user=Sentinel::check())
       {
-        if((Sentinel::getUser()->inRole('mahasiswa'))){
-          $this->clearTempData($user);      
-        }
           // User is logged in and assigned to the `$user` variable.
           return response()->json($response);
       }
@@ -65,7 +54,7 @@ class UserController extends Controller
     if ($user = Sentinel::getUser())
     {
           $userprofile = Sentinel::getUser();
-          $uu = Users::with(['roles','getPlacements','latestPlacement.getUnit'])->where('id','=',$userprofile->id)->get();
+          $uu = Users::with(['roles'])->where('id','=',$userprofile->id)->get();
           return view('Admin.profile.index',array(
             'res'=>$userprofile,
             'resu'=>$uu[0]
@@ -135,13 +124,5 @@ class UserController extends Controller
   }
 
   function clearTempData($user){
-    $hisNilai = HistoryNilai::where('id_registrasi_mahasiswa','=',$user->id_registrasi_mahasiswa);
-    $hisNilai->delete();
-
-    $bio = BiodataMahasiswa::where('id_registrasi_mahasiswa','=',$user->id_registrasi_mahasiswa);
-    $bio->delete();
-
-    $tra = TranskripNilai::where('id_registrasi_mahasiswa','=',json_decode($user->data_mahasiswa,true)['id_registrasi_mahasiswa']);
-    $tra->delete();
   }
 }

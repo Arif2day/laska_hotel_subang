@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Table</h1>
+        <h1 class="h3 mb-0 text-gray-800">Data Tempat Order (Places)</h1>
     </div>
 
     {{-- Filter --}}
@@ -53,37 +53,37 @@
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Data Table</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Data Tempat Order (Places)</h6>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="row float-right mr-0 mb-2">
                         {{-- <button class="btn btn-sm btn-primary mr-2" disabled>
                             <i class="fas fa-fw fa-print"></i> Cetak Laporan</button> --}}
-                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#addTableModal">
-                            <i class="fas fa-fw fa-plus-circle"></i> Add Table</button>
+                        <button class="btn btn-sm btn-info" data-toggle="modal" data-target="#addPlaceModal">
+                            <i class="fas fa-fw fa-plus-circle"></i> Add Place</button>
                     </div>
                     <div class="text-xs">
-                        <table class="table table-datatable display" style="width:100%;">
+                        <table class="table place-datatable display" style="width:100%;">
                             <thead class="text-center">
                                 <th style="width: 20px">NO</th>
-                                <th>TABLE NAME</th>
-                                <th>CLASS NAME</th>
+                                <th>PLACE NAME</th>
+                                <th>CATEGORY NAME</th>
                                 <th>QRCODE</th>
                                 <th style="width: 100px">ACTION</th>
                             </thead>
                             <tbody></tbody>
                         </table>
-                        <input type="hidden" id="urllist" name="urllist" value="{{url('master/table/list')}}">
-                        <input type="hidden" id="urldel" name="urldel" value="{{url('master/table')}}">                        
+                        <input type="hidden" id="urllist" name="urllist" value="{{url('master/place/list')}}">
+                        <input type="hidden" id="urldel" name="urldel" value="{{url('master/place')}}">                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    @include('Admin.SUPER.table.modal.add')
-    @include('Admin.SUPER.table.modal.edit')
+    @include('Admin.SUPER.place.modal.add')
+    @include('Admin.SUPER.place.modal.edit')
 
 </div>
 @endsection
@@ -103,7 +103,7 @@
         }
     });
 
-    var table = $('.table-datatable').DataTable({   
+    var table = $('.place-datatable').DataTable({   
         pageLength : 25,
         dom: 'lfrtip',        
         processing: true,
@@ -129,8 +129,8 @@
         },
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'table_name', name: 'table_name'},
-            {data: 'table_class.class_name', name: 'table_class.class_name'},
+            {data: 'place_name', name: 'place_name'},
+            {data: 'place_category.category_name', name: 'place_category.category_name'},
             {data: 'qrcode', name: 'qrcode'},
             {data: 'action', name:'action'},               
         ]       
@@ -140,10 +140,10 @@
         table.ajax.reload();
     }
 
-    function deleteTable(params) {
+    function deletePlace(params) {
         Swal.fire({
             title: 'Yakin?',
-            text: "Anda akan menghapus Data Table.",
+            text: "Anda akan menghapus Data Place.",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -182,32 +182,32 @@
     }   
 
     // Form Sort Function
-    function clearFormTable() {
+    function clearFormPlace() {
         document.getElementById('name').value='';
-        $('#table_class').val(-1);
+        $('#place_category').val(-1);
     } 
 
-    function clearEditFormTable() {
+    function clearEditFormPlace() {
         document.getElementById('e_id').value='';
         document.getElementById('e_name').value='';
-        $('#e_table_class').val(-1);
+        $('#e_place_category').val(-1);
     } 
 
-    function saveTable() {
+    function savePlace() {
         let name = $('input[id=name').val();
-        let table_class_id = $('#table_class').val();
+        let place_category_id = $('#place_category').val();
         
-        if (table_class_id=="") {
-            Swal.fire({icon: 'error', title: 'Oops...',text: "Pilih Table Class Dahulu!",});
+        if (place_category_id=="") {
+            Swal.fire({icon: 'error', title: 'Oops...',text: "Pilih Place Category Dahulu!",});
         }else if (name=="") {
-            Swal.fire({icon: 'error', title: 'Oops...',text: "Table Name Required!",});
+            Swal.fire({icon: 'error', title: 'Oops...',text: "Place Name Required!",});
         }
         else{
             let datar = {};
             datar['_method']='POST';
             datar['_token']=$('._token').data('token');
-            datar['table_class_id']=table_class_id;
-            datar['table_name']=name;
+            datar['place_category_id']=place_category_id;
+            datar['place_name']=name;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -220,8 +220,8 @@
             success: function(data) {
                 if (data.error==false) {
                     table.ajax.reload();
-                    clearFormTable();
-                    $('#addTableModal').modal('hide');
+                    clearFormPlace();
+                    $('#addPlaceModal').modal('hide');
                     Swal.fire({icon: 'success', title: 'Horray...',text: data.message});
                 }else{
                     Swal.fire({
@@ -235,23 +235,23 @@
         }
     } 
 
-    function updateTable() {
+    function updatePlace() {
         let id = $('input[id=e_id').val();
         let name = $('input[id=e_name').val();     
-        let table_class_id = $('#e_table_class').val();
+        let place_category_id = $('#e_place_category').val();
         
-        if (table_class_id=="") {
-            Swal.fire({icon: 'error', title: 'Oops...',text: "Pilih Table Class Dahulu!",});
+        if (place_category_id=="") {
+            Swal.fire({icon: 'error', title: 'Oops...',text: "Pilih Place Class Dahulu!",});
         }else if (name=="") {
-            Swal.fire({icon: 'error', title: 'Oops...',text: "Table Name Required!",});
+            Swal.fire({icon: 'error', title: 'Oops...',text: "Place Name Required!",});
         }
         else{
             let datar = {};
             datar['_method']='POST';
             datar['_token']=$('._token').data('token');
             datar['id']=id;
-            datar['table_class_id']=table_class_id;
-            datar['table_name']=name;
+            datar['place_category_id']=place_category_id;
+            datar['place_name']=name;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -264,8 +264,8 @@
             success: function(data) {
                 if (data.error==false) {
                     table.ajax.reload();
-                    clearEditFormTable();
-                    $('#editTableModal').modal('hide');
+                    clearEditFormPlace();
+                    $('#editPlaceModal').modal('hide');
                     Swal.fire({icon: 'success', title: 'Horray...',text: data.message});
                 }else{
                     Swal.fire({
@@ -279,16 +279,16 @@
         }
     } 
 
-    $(document).on('click', '.editTableBtn', function () {
+    $(document).on('click', '.editPlaceBtn', function () {
         // Ambil data dari atribut tombol
         var id = $(this).data('id');
-        var name = $(this).data('table_name');
-        var table_class_id = $(this).data('table_class_id')
+        var name = $(this).data('place_name');
+        var place_category_id = $(this).data('place_category_id')
         console.log('dddd');
         // Set data ke form dalam modal
-        $('#editTableModal input[id="e_id"]').val(id);
-        $('#editTableModal input[id="e_name"]').val(name);
-        $('#editTableModal select[id="e_table_class"]').val(table_class_id);        
+        $('#editPlaceModal input[id="e_id"]').val(id);
+        $('#editPlaceModal input[id="e_name"]').val(name);
+        $('#editPlaceModal select[id="e_place_category"]').val(place_category_id);        
 
     });
 

@@ -20,11 +20,11 @@
             <a class="collapse-item {{ request()->is('master/user-manager') ? 'active' : '' }}" href="{{ url('master/user-manager') }}">
                 Pengguna
             </a>
-            <a class="collapse-item {{ request()->is('master/table-class') ? 'active' : '' }}" href="{{ url('master/table-class') }}">
-                Kelas Meja
+            <a class="collapse-item {{ request()->is('master/place-category') ? 'active' : '' }}" href="{{ url('master/place-category') }}">
+                Kategori Tempat Order
             </a>
-            <a class="collapse-item {{ request()->is('master/table') ? 'active' : '' }}" href="{{ url('master/table') }}">
-                Meja
+            <a class="collapse-item {{ request()->is('master/place') ? 'active' : '' }}" href="{{ url('master/place') }}">
+                Tempat Order
             </a>
             <a class="collapse-item {{ request()->is('master/menu') ? 'active' : '' }}" href="{{ url('master/menu') }}">
                 Menu

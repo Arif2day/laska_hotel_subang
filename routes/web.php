@@ -10,8 +10,8 @@ use App\Http\Controllers\ScanController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Super\UserManagerController;
-use App\Http\Controllers\Super\TableClassController;
-use App\Http\Controllers\Super\TableController;
+use App\Http\Controllers\Super\PlaceCategoryController;
+use App\Http\Controllers\Super\PlaceController;
 use App\Http\Controllers\Super\MenuTypeController;
 use App\Http\Controllers\Super\MenuController;
 use App\Http\Controllers\Super\LiveOrderController;
@@ -49,7 +49,7 @@ Route::get('login', [UserController::class,'login']);
 Route::post('login', [UserController::class,'postLogin']);
 
 Route::get('/',[BerandaController::class,'index'])->name('beranda');
-Route::get('/menu',[BerandaController::class,'indexMenu'])->middleware('check.table')->name('menu');
+Route::get('/menu',[BerandaController::class,'indexMenu'])->middleware('check.place')->name('menu');
 
 Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
 Route::get('/cart/view', [CartController::class, 'view'])->name('cart.view');
@@ -101,19 +101,19 @@ Route::group(['middleware' => 'sentinelmember'], function(){
 
 Route::group(['middleware' => 'SAmember'],function(){	
 	Route::group(['prefix' => 'master'], function(){
-		Route::group(['prefix' => 'table-class'], function(){
-			Route::get('/', [TableClassController::class,'index']);
-			Route::post('/list', [TableClassController::class,'getTableClassList']);
-			Route::post('/',[TableClassController::class,'store']);
-			Route::post('/update',[TableClassController::class,'update']);
-			Route::delete('', [TableClassController::class,'destroy']);
+		Route::group(['prefix' => 'place-category'], function(){
+			Route::get('/', [PlaceCategoryController::class,'index']);
+			Route::post('/list', [PlaceCategoryController::class,'getPlaceCategoryList']);
+			Route::post('/',[PlaceCategoryController::class,'store']);
+			Route::post('/update',[PlaceCategoryController::class,'update']);
+			Route::delete('', [PlaceCategoryController::class,'destroy']);
 		});
-		Route::group(['prefix' => 'table'], function(){
-			Route::get('/', [TableController::class,'index']);
-			Route::post('/list', [TableController::class,'getTableList']);
-			Route::post('/',[TableController::class,'store']);
-			Route::post('/update',[TableController::class,'update']);
-			Route::delete('', [TableController::class,'destroy']);
+		Route::group(['prefix' => 'place'], function(){
+			Route::get('/', [PlaceController::class,'index']);
+			Route::post('/list', [PlaceController::class,'getPlaceList']);
+			Route::post('/',[PlaceController::class,'store']);
+			Route::post('/update',[PlaceController::class,'update']);
+			Route::delete('', [PlaceController::class,'destroy']);
 		});
 		Route::group(['prefix' => 'menu-type'], function(){
 			Route::get('/', [MenuTypeController::class,'index']);
@@ -160,3 +160,10 @@ Route::post('/notifications/read/{id}', function ($id) {
     }
     return response()->json(['success' => true]);
 })->name('notifications.read');
+
+Route::post('/notifications/read-all', function () {
+    $user = Sentinel::getUser();
+    $user->unreadNotifications->markAsRead();
+
+    return response()->json(['success' => true]);
+})->name('notifications.readAll');

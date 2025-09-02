@@ -25,7 +25,7 @@ class OrderApprovedNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => "Order approved oleh admin dari meja {$this->order->table->table_name}",
+            'message' => "Order approved oleh admin dari tempat order {$this->order->place->place_name}",
             'order_id' => $this->order->id,
             'type'=>'Order Perlu Disajikan',
             'notifier'=>'admin'

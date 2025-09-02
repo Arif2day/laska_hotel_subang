@@ -4,32 +4,32 @@ namespace App\Http\Controllers\SUPER;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TableClasses;
+use App\Models\PlaceCategories;
 
 use Sentinel;
 use DataTables;
 
-class TableClassController extends Controller
+class PlaceCategoryController extends Controller
 {
     public function index() {
-        return view('Admin.SUPER.table-class.index');
+        return view('Admin.SUPER.place-category.index');
     }
 
-    public function getTableClassList(Request $req) {
+    public function getPlaceCategoryList(Request $req) {
         if ($req->ajax()) {
-            $data = TableClasses::all();
+            $data = PlaceCategories::all();
             
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
                     $actionBtn =
-                    '<button class="ml-1 mb-1 btn btn-sm btn-primary editTableClassBtn" title="Edit Table Class"'. 
+                    '<button class="ml-1 mb-1 btn btn-sm btn-primary editPlaceCategoryBtn" title="Edit Place Category"'. 
                     ' data-id="'.$row->id.'"'.
-                    ' data-class_name="'.$row->class_name.'"'.
+                    ' data-category_name="'.$row->category_name.'"'.
                     ' data-toggle="modal"'.
-                    ' data-target="#editTableClassModal"'.                   
+                    ' data-target="#editPlaceCategoryModal"'.                   
                         '><i class="fa fa-pen"></i></button>'.
-                    '<button class="ml-1 mb-1 btn btn-sm btn-danger" title="Delete Table Class" onClick="deleteTableClass('.$row->id.')"'.
+                    '<button class="ml-1 mb-1 btn btn-sm btn-danger" title="Delete Place Category" onClick="deletePlaceCategory('.$row->id.')"'.
                         '><i class="fa fa-trash"></i></button>'
                     ;
                     return $actionBtn;
@@ -45,13 +45,13 @@ class TableClassController extends Controller
       $res['message']="";
       $res['data']='';
       try {
-        $data = new TableClasses();  
-        $data->class_name = $request->class_name;
+        $data = new PlaceCategories();  
+        $data->category_name = $request->category_name;
         if($data->save()){
-          $res['message']="Table class saved successfully.";
+          $res['message']="Place category saved successfully.";
         }else{
           $res['error']=true;
-          $res['message']="Table class failed to save!";
+          $res['message']="Place category failed to save!";
         }
       } catch (\Exception $e) {
         $res['error']=true;
@@ -67,14 +67,14 @@ class TableClassController extends Controller
       $res['message']="";
       $res['data']='';
 
-      $data = TableClasses::where('id',$request->id)->first();
+      $data = PlaceCategories::where('id',$request->id)->first();
       try {
-        $data->class_name = $request->class_name;
+        $data->category_name = $request->category_name;
         if($data->save()){
-          $res['message']="Table class updated successfully.";
+          $res['message']="Place category updated successfully.";
         }else{
           $res['error']=true;
-          $res['message']="Table class failed to update!";
+          $res['message']="Place category failed to update!";
         }
       } catch (\Exception $e) {
         $res['error']=true;
@@ -90,12 +90,12 @@ class TableClassController extends Controller
       $res['data']='';
       $res['message']="";
       // delete
-      $data = TableClasses::where('id',$request->id)->first();
+      $data = PlaceCategories::where('id',$request->id)->first();
       if ($data->delete()) {
-        $res['message']="Table class has been deleted.";
+        $res['message']="Place category has been deleted.";
       }else{
         $res['error']=true;
-        $res['message']="Fail to delete table class!";
+        $res['message']="Fail to delete place category!";
       }
       // redirect
       return response()->json($res);
