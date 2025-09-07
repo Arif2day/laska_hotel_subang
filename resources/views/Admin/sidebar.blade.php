@@ -25,9 +25,7 @@
     </li>
 
 
-    @if((Sentinel::getUser()->inRole('mahasiswa')))
-    @include('Admin.sidebar-detail.menu-mhs')
-    @endif
+    
 
     <!-- Nav Item - Charts -->
     <li class="nav-item {{ 
@@ -56,43 +54,9 @@
         </div>
     </li>
     
-    {{-- @if(!Sentinel::getUser()->inRole('super-admin'))
-    <li class="nav-item {{ 
-            request()->is('ftk/ftk') ? 'active' : '' 
-            }}">
-        <a class="nav-link" href="{{url('ftk/ftk')}}">
-            <i class="fas fa-fw fa-id-badge"></i>
-            <span>FTK</span></a>
-    </li>
-    @endif --}}
-    {{-- <hr class="sidebar-divider"> --}}
-
-    {{-- <li class="nav-item {{ 
-        request()->is('permohonan-mutasi') ? 'active' : '' 
-        }}">
-        <a class="nav-link" href="{{url('permohonan-mutasi')}}">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Permohonan Mutasi</span></a>
-    </li>
-
-    <li class="nav-item {{ 
-        request()->is('riwayat-permohonan') ? 'active' : '' 
-        }}">
-        <a class="nav-link" href="{{url('riwayat-permohonan')}}">
-            <i class="fas fa-fw fa-users"></i>
-            <span>Riwayat Permohonan</span></a>
-    </li> --}}
     
-    {{-- @if((Sentinel::getUser()->inRole('prodi-admin')))
-    @include('Admin.sidebar-detail.menu-prodi')
-    @endif
-
-    @if((Sentinel::getUser()->inRole('wakil-rektor-akademik')))
-    @include('Admin.sidebar-detail.menu-wr1')
-    @endif --}}
-    
-    @if((Sentinel::getUser()->inRole('peserta')))
-    @include('Admin.sidebar-detail.menu-peserta')
+    @if((Sentinel::getUser()->inRole('koki')))
+    @include('Admin.sidebar-detail.menu-koki')
     @endif
 
     @if((Sentinel::getUser()->inRole('super-admin')))

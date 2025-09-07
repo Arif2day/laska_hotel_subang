@@ -6,7 +6,7 @@ use Closure;
 use Sentinel;
 use Redirect;
 
-class PRODIAdminMember
+class KOKIAdminMember
 {
     /**
      * Handle an incoming request.
@@ -22,7 +22,7 @@ class PRODIAdminMember
           //Toastr::info('This page is only accessible to guests', 'Guest Access Only');
           return Redirect::to('login');
       } else {
-        if(!Sentinel::inRole('prodi-admin')){
+        if(!Sentinel::inRole('koki')){
           return Redirect::to('notfound');
         }
         // return Redirect::to('login');

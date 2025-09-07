@@ -97,6 +97,25 @@ Route::group(['middleware' => 'sentinelmember'], function(){
 	Route::get('logout',[UserController::class,'logout']);
 });
 
+Route::group(['middleware' => 'KOKImember'],function(){	
+	Route::group(['prefix' => 'master'], function(){
+		Route::group(['prefix' => 'menu-type'], function(){
+			Route::get('/', [MenuTypeController::class,'index']);
+			Route::post('/list', [MenuTypeController::class,'getMenuTypeList']);
+			Route::post('/',[MenuTypeController::class,'store']);
+			Route::post('/update',[MenuTypeController::class,'update']);
+			Route::delete('', [MenuTypeController::class,'destroy']);
+		});
+		Route::group(['prefix' => 'menu'], function(){
+			Route::get('/', [MenuController::class,'index']);
+			Route::post('/list', [MenuController::class,'getMenuList']);
+			Route::post('/',[MenuController::class,'store']);
+			Route::post('/update',[MenuController::class,'update']);
+			Route::delete('', [MenuController::class,'destroy']);
+		});
+	});
+});
+
 
 
 Route::group(['middleware' => 'SAmember'],function(){	
@@ -114,21 +133,7 @@ Route::group(['middleware' => 'SAmember'],function(){
 			Route::post('/',[PlaceController::class,'store']);
 			Route::post('/update',[PlaceController::class,'update']);
 			Route::delete('', [PlaceController::class,'destroy']);
-		});
-		Route::group(['prefix' => 'menu-type'], function(){
-			Route::get('/', [MenuTypeController::class,'index']);
-			Route::post('/list', [MenuTypeController::class,'getMenuTypeList']);
-			Route::post('/',[MenuTypeController::class,'store']);
-			Route::post('/update',[MenuTypeController::class,'update']);
-			Route::delete('', [MenuTypeController::class,'destroy']);
-		});
-		Route::group(['prefix' => 'menu'], function(){
-			Route::get('/', [MenuController::class,'index']);
-			Route::post('/list', [MenuController::class,'getMenuList']);
-			Route::post('/',[MenuController::class,'store']);
-			Route::post('/update',[MenuController::class,'update']);
-			Route::delete('', [MenuController::class,'destroy']);
-		});
+		});		
 	});
 	Route::group(['prefix' => 'master/user-manager'], function(){
 			Route::get('/', [UserManagerController::class,'index']);

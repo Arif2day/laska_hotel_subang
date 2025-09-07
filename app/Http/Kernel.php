@@ -64,9 +64,7 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'sentinelmember' => \App\Http\Middleware\SentinelMember::class,
         'SAmember' => \App\Http\Middleware\SuperAdminMember::class,
-        'BAUmember' => \App\Http\Middleware\BAUAdminMember::class,
-        'PRODImember' => \App\Http\Middleware\PRODIAdminMember::class,
-        'WRAkademik' => \App\Http\Middleware\WR1AdminMember::class,
+        'KOKImember' => \App\Http\Middleware\KOKIAdminMember::class,
         'check.place' => \App\Http\Middleware\CheckPlace::class,
     ];
 }
